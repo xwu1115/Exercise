@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0004712E1C56A46B00A1A41D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004712D1C56A46B00A1A41D /* main.m */; };
+		000471311C56A46B00A1A41D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471301C56A46B00A1A41D /* AppDelegate.m */; };
+		000471341C56A46B00A1A41D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471331C56A46B00A1A41D /* ViewController.m */; };
+		000471371C56A46B00A1A41D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000471351C56A46B00A1A41D /* Main.storyboard */; };
+		000471391C56A46B00A1A41D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000471381C56A46B00A1A41D /* Assets.xcassets */; };
+		0004713C1C56A46B00A1A41D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0004713A1C56A46B00A1A41D /* LaunchScreen.storyboard */; };
+		000471471C56A46B00A1A41D /* PayPalGalleryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471461C56A46B00A1A41D /* PayPalGalleryTests.m */; };
+		000471521C56A46B00A1A41D /* PayPalGalleryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471511C56A46B00A1A41D /* PayPalGalleryUITests.m */; };
+		000471611C56A5B400A1A41D /* PPLPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471601C56A5B400A1A41D /* PPLPhotoManager.m */; };
+		000471641C56A61F00A1A41D /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000471621C56A61F00A1A41D /* Photos.framework */; };
+		000471651C56A61F00A1A41D /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000471631C56A61F00A1A41D /* PhotosUI.framework */; };
+		000471681C56A6ED00A1A41D /* PPLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471671C56A6ED00A1A41D /* PPLPhoto.m */; };
+		0004716B1C56A70A00A1A41D /* PPLPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004716A1C56A70A00A1A41D /* PPLPhotoCollection.m */; };
+		0004716E1C56AA0800A1A41D /* PPLVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004716D1C56AA0800A1A41D /* PPLVideo.m */; };
+		000471711C56ADA400A1A41D /* PPLMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471701C56ADA400A1A41D /* PPLMediaItem.m */; };
+		000471751C56EF3000A1A41D /* PPLPhotoConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471741C56EF3000A1A41D /* PPLPhotoConverter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		000471431C56A46B00A1A41D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000471211C56A46B00A1A41D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000471281C56A46B00A1A41D;
+			remoteInfo = PayPalGallery;
+		};
+		0004714E1C56A46B00A1A41D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000471211C56A46B00A1A41D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000471281C56A46B00A1A41D;
+			remoteInfo = PayPalGallery;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		000471291C56A46B00A1A41D /* PayPalGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayPalGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0004712D1C56A46B00A1A41D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0004712F1C56A46B00A1A41D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		000471301C56A46B00A1A41D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		000471321C56A46B00A1A41D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		000471331C56A46B00A1A41D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		000471361C56A46B00A1A41D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		000471381C56A46B00A1A41D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0004713B1C56A46B00A1A41D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0004713D1C56A46B00A1A41D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		000471421C56A46B00A1A41D /* PayPalGalleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PayPalGalleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		000471461C56A46B00A1A41D /* PayPalGalleryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayPalGalleryTests.m; sourceTree = "<group>"; };
+		000471481C56A46B00A1A41D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0004714D1C56A46B00A1A41D /* PayPalGalleryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PayPalGalleryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		000471511C56A46B00A1A41D /* PayPalGalleryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayPalGalleryUITests.m; sourceTree = "<group>"; };
+		000471531C56A46B00A1A41D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0004715F1C56A5B400A1A41D /* PPLPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLPhotoManager.h; sourceTree = "<group>"; };
+		000471601C56A5B400A1A41D /* PPLPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLPhotoManager.m; sourceTree = "<group>"; };
+		000471621C56A61F00A1A41D /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		000471631C56A61F00A1A41D /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		000471661C56A6ED00A1A41D /* PPLPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLPhoto.h; sourceTree = "<group>"; };
+		000471671C56A6ED00A1A41D /* PPLPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLPhoto.m; sourceTree = "<group>"; };
+		000471691C56A70A00A1A41D /* PPLPhotoCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLPhotoCollection.h; sourceTree = "<group>"; };
+		0004716A1C56A70A00A1A41D /* PPLPhotoCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLPhotoCollection.m; sourceTree = "<group>"; };
+		0004716C1C56AA0800A1A41D /* PPLVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLVideo.h; sourceTree = "<group>"; };
+		0004716D1C56AA0800A1A41D /* PPLVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLVideo.m; sourceTree = "<group>"; };
+		0004716F1C56ADA400A1A41D /* PPLMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLMediaItem.h; sourceTree = "<group>"; };
+		000471701C56ADA400A1A41D /* PPLMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLMediaItem.m; sourceTree = "<group>"; };
+		000471731C56EF3000A1A41D /* PPLPhotoConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLPhotoConverter.h; sourceTree = "<group>"; };
+		000471741C56EF3000A1A41D /* PPLPhotoConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLPhotoConverter.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		000471261C56A46B00A1A41D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000471641C56A61F00A1A41D /* Photos.framework in Frameworks */,
+				000471651C56A61F00A1A41D /* PhotosUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0004713F1C56A46B00A1A41D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0004714A1C56A46B00A1A41D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000471201C56A46B00A1A41D = {
+			isa = PBXGroup;
+			children = (
+				0004712B1C56A46B00A1A41D /* PayPalGallery */,
+				000471451C56A46B00A1A41D /* PayPalGalleryTests */,
+				000471501C56A46B00A1A41D /* PayPalGalleryUITests */,
+				0004712A1C56A46B00A1A41D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0004712A1C56A46B00A1A41D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000471291C56A46B00A1A41D /* PayPalGallery.app */,
+				000471421C56A46B00A1A41D /* PayPalGalleryTests.xctest */,
+				0004714D1C56A46B00A1A41D /* PayPalGalleryUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0004712B1C56A46B00A1A41D /* PayPalGallery */ = {
+			isa = PBXGroup;
+			children = (
+				0004712F1C56A46B00A1A41D /* AppDelegate.h */,
+				000471301C56A46B00A1A41D /* AppDelegate.m */,
+				000471321C56A46B00A1A41D /* ViewController.h */,
+				000471331C56A46B00A1A41D /* ViewController.m */,
+				000471721C56B3E100A1A41D /* SDK */,
+				000471351C56A46B00A1A41D /* Main.storyboard */,
+				000471381C56A46B00A1A41D /* Assets.xcassets */,
+				0004713A1C56A46B00A1A41D /* LaunchScreen.storyboard */,
+				0004713D1C56A46B00A1A41D /* Info.plist */,
+				000471621C56A61F00A1A41D /* Photos.framework */,
+				000471631C56A61F00A1A41D /* PhotosUI.framework */,
+				0004712C1C56A46B00A1A41D /* Supporting Files */,
+			);
+			path = PayPalGallery;
+			sourceTree = "<group>";
+		};
+		0004712C1C56A46B00A1A41D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0004712D1C56A46B00A1A41D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		000471451C56A46B00A1A41D /* PayPalGalleryTests */ = {
+			isa = PBXGroup;
+			children = (
+				000471461C56A46B00A1A41D /* PayPalGalleryTests.m */,
+				000471481C56A46B00A1A41D /* Info.plist */,
+			);
+			path = PayPalGalleryTests;
+			sourceTree = "<group>";
+		};
+		000471501C56A46B00A1A41D /* PayPalGalleryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				000471511C56A46B00A1A41D /* PayPalGalleryUITests.m */,
+				000471531C56A46B00A1A41D /* Info.plist */,
+			);
+			path = PayPalGalleryUITests;
+			sourceTree = "<group>";
+		};
+		000471721C56B3E100A1A41D /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				0004715F1C56A5B400A1A41D /* PPLPhotoManager.h */,
+				000471601C56A5B400A1A41D /* PPLPhotoManager.m */,
+				0004716F1C56ADA400A1A41D /* PPLMediaItem.h */,
+				000471701C56ADA400A1A41D /* PPLMediaItem.m */,
+				000471661C56A6ED00A1A41D /* PPLPhoto.h */,
+				000471671C56A6ED00A1A41D /* PPLPhoto.m */,
+				0004716C1C56AA0800A1A41D /* PPLVideo.h */,
+				0004716D1C56AA0800A1A41D /* PPLVideo.m */,
+				000471691C56A70A00A1A41D /* PPLPhotoCollection.h */,
+				0004716A1C56A70A00A1A41D /* PPLPhotoCollection.m */,
+				000471731C56EF3000A1A41D /* PPLPhotoConverter.h */,
+				000471741C56EF3000A1A41D /* PPLPhotoConverter.m */,
+			);
+			name = SDK;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000471281C56A46B00A1A41D /* PayPalGallery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000471561C56A46B00A1A41D /* Build configuration list for PBXNativeTarget "PayPalGallery" */;
+			buildPhases = (
+				000471251C56A46B00A1A41D /* Sources */,
+				000471261C56A46B00A1A41D /* Frameworks */,
+				000471271C56A46B00A1A41D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PayPalGallery;
+			productName = PayPalGallery;
+			productReference = 000471291C56A46B00A1A41D /* PayPalGallery.app */;
+			productType = "com.apple.product-type.application";
+		};
+		000471411C56A46B00A1A41D /* PayPalGalleryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000471591C56A46B00A1A41D /* Build configuration list for PBXNativeTarget "PayPalGalleryTests" */;
+			buildPhases = (
+				0004713E1C56A46B00A1A41D /* Sources */,
+				0004713F1C56A46B00A1A41D /* Frameworks */,
+				000471401C56A46B00A1A41D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				000471441C56A46B00A1A41D /* PBXTargetDependency */,
+			);
+			name = PayPalGalleryTests;
+			productName = PayPalGalleryTests;
+			productReference = 000471421C56A46B00A1A41D /* PayPalGalleryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0004714C1C56A46B00A1A41D /* PayPalGalleryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0004715C1C56A46B00A1A41D /* Build configuration list for PBXNativeTarget "PayPalGalleryUITests" */;
+			buildPhases = (
+				000471491C56A46B00A1A41D /* Sources */,
+				0004714A1C56A46B00A1A41D /* Frameworks */,
+				0004714B1C56A46B00A1A41D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0004714F1C56A46B00A1A41D /* PBXTargetDependency */,
+			);
+			name = PayPalGalleryUITests;
+			productName = PayPalGalleryUITests;
+			productReference = 0004714D1C56A46B00A1A41D /* PayPalGalleryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000471211C56A46B00A1A41D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Shawn Wu";
+				TargetAttributes = {
+					000471281C56A46B00A1A41D = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = T3T6BCJR39;
+					};
+					000471411C56A46B00A1A41D = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 000471281C56A46B00A1A41D;
+					};
+					0004714C1C56A46B00A1A41D = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 000471281C56A46B00A1A41D;
+					};
+				};
+			};
+			buildConfigurationList = 000471241C56A46B00A1A41D /* Build configuration list for PBXProject "PayPalGallery" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 000471201C56A46B00A1A41D;
+			productRefGroup = 0004712A1C56A46B00A1A41D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				000471281C56A46B00A1A41D /* PayPalGallery */,
+				000471411C56A46B00A1A41D /* PayPalGalleryTests */,
+				0004714C1C56A46B00A1A41D /* PayPalGalleryUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		000471271C56A46B00A1A41D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0004713C1C56A46B00A1A41D /* LaunchScreen.storyboard in Resources */,
+				000471391C56A46B00A1A41D /* Assets.xcassets in Resources */,
+				000471371C56A46B00A1A41D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		000471401C56A46B00A1A41D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0004714B1C56A46B00A1A41D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		000471251C56A46B00A1A41D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0004716E1C56AA0800A1A41D /* PPLVideo.m in Sources */,
+				000471341C56A46B00A1A41D /* ViewController.m in Sources */,
+				000471611C56A5B400A1A41D /* PPLPhotoManager.m in Sources */,
+				000471311C56A46B00A1A41D /* AppDelegate.m in Sources */,
+				000471751C56EF3000A1A41D /* PPLPhotoConverter.m in Sources */,
+				000471711C56ADA400A1A41D /* PPLMediaItem.m in Sources */,
+				0004712E1C56A46B00A1A41D /* main.m in Sources */,
+				0004716B1C56A70A00A1A41D /* PPLPhotoCollection.m in Sources */,
+				000471681C56A6ED00A1A41D /* PPLPhoto.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0004713E1C56A46B00A1A41D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000471471C56A46B00A1A41D /* PayPalGalleryTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		000471491C56A46B00A1A41D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000471521C56A46B00A1A41D /* PayPalGalleryUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		000471441C56A46B00A1A41D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000471281C56A46B00A1A41D /* PayPalGallery */;
+			targetProxy = 000471431C56A46B00A1A41D /* PBXContainerItemProxy */;
+		};
+		0004714F1C56A46B00A1A41D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000471281C56A46B00A1A41D /* PayPalGallery */;
+			targetProxy = 0004714E1C56A46B00A1A41D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		000471351C56A46B00A1A41D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				000471361C56A46B00A1A41D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0004713A1C56A46B00A1A41D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0004713B1C56A46B00A1A41D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		000471541C56A46B00A1A41D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		000471551C56A46B00A1A41D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		000471571C56A46B00A1A41D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = PayPalGallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gatech.PayPalGallery;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		000471581C56A46B00A1A41D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = PayPalGallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gatech.PayPalGallery;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0004715A1C56A46B00A1A41D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PayPalGalleryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gatech.PayPalGalleryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PayPalGallery.app/PayPalGallery";
+			};
+			name = Debug;
+		};
+		0004715B1C56A46B00A1A41D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PayPalGalleryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gatech.PayPalGalleryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PayPalGallery.app/PayPalGallery";
+			};
+			name = Release;
+		};
+		0004715D1C56A46B00A1A41D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PayPalGalleryUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gatech.PayPalGalleryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = PayPalGallery;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		0004715E1C56A46B00A1A41D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PayPalGalleryUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = gatech.PayPalGalleryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = PayPalGallery;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		000471241C56A46B00A1A41D /* Build configuration list for PBXProject "PayPalGallery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000471541C56A46B00A1A41D /* Debug */,
+				000471551C56A46B00A1A41D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		000471561C56A46B00A1A41D /* Build configuration list for PBXNativeTarget "PayPalGallery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000471571C56A46B00A1A41D /* Debug */,
+				000471581C56A46B00A1A41D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		000471591C56A46B00A1A41D /* Build configuration list for PBXNativeTarget "PayPalGalleryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0004715A1C56A46B00A1A41D /* Debug */,
+				0004715B1C56A46B00A1A41D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0004715C1C56A46B00A1A41D /* Build configuration list for PBXNativeTarget "PayPalGalleryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0004715D1C56A46B00A1A41D /* Debug */,
+				0004715E1C56A46B00A1A41D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 000471211C56A46B00A1A41D /* Project object */;
+}
