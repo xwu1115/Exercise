@@ -15,4 +15,6 @@
 
 @interface PPLPhotoManager : NSObject
 @property (nonatomic, strong) NSDictionary *assetCollections;
+
+- (void)displayPhoto:(id)item size:(CGSize)size completion:(void (^)(UIImage *result, NSDictionary *info))callback;
 @end

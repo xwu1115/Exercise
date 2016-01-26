@@ -12,7 +12,7 @@
 
 + (void)imageWith:(id)item size:(CGSize)size manager:(PHCachingImageManager *)manager completion:(void (^)(UIImage *result, NSDictionary *info))callback
 {
-    if([item isKindOfClass:[PHAsset class]]){
+    if([item isKindOfClass:[PHObject class]]){
         PHAsset* asset = item;
         [manager requestImageForAsset:asset
                            targetSize:size
