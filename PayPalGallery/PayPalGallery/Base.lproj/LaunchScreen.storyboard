@@ -7,7 +7,6 @@
         <!--launch-->
         <scene sceneID="sFL-GX-mpt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ATW-EJ-MFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="launch" id="VEE-rT-g5N" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wbb-C9-lQ8"/>
@@ -20,6 +19,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="z0D-ve-kNd"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ATW-EJ-MFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1833" y="165"/>
         </scene>

@@ -19,9 +19,9 @@
     [self.mediaData addObject:[self parseMeidaData:item]];
 }
 
-- (PPLMediaItem *)parseMeidaData:(id)item
+- (PPLObject *)parseMeidaData:(id)item
 {
-    PPLMediaItem *parsedItem;
+    PPLObject *parsedItem;
     if ([item isKindOfClass:[PHAsset class]]) {
         
     }

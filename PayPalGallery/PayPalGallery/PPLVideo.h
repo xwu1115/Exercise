@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PPLMediaItem.h"
+#import "PPLObject.h"
 
-@interface PPLVideo : PPLMediaItem
+@interface PPLVideo : PPLObject
 
 @end

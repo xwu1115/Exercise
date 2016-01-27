@@ -8,6 +8,7 @@
 
 #import "MasterViewController.h"
 #import "PPLPhotoManager.h"
+#import "DetailViewController.h"
 
 static NSString* CellReuseIdentifier = @"ppl";
 
@@ -30,6 +31,14 @@ static NSString* CellReuseIdentifier = @"ppl";
     [super didReceiveMemoryWarning];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"detail"])
+    {
+        DetailViewController *detailViewController = segue.destinationViewController;
+        detailViewController.manager = self.manager;
+    }
+}
 
 #pragma mark - UICollectionViewDataSource
 
@@ -39,7 +48,6 @@ static NSString* CellReuseIdentifier = @"ppl";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellReuseIdentifier forIndexPath:indexPath];
-    //cell.representedAssetIdentifier = asset.localIdentifier;
     id item = [self.selectedAssets objectAtIndex:indexPath.item];
 
     [self.manager displayPhoto:item size:CGSizeMake(100, 100) completion:^(UIImage *result, NSDictionary *info) {
@@ -50,5 +58,14 @@ static NSString* CellReuseIdentifier = @"ppl";
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    
+    NSLog(@"touched cell %@ at indexPath %@", cell, indexPath);
+    
+    [self.manager setCurrentSelectedItem: [self.selectedAssets objectAtIndex:indexPath.item]];
+    [self performSegueWithIdentifier:@"detail" sender:nil];
+}
 
 @end

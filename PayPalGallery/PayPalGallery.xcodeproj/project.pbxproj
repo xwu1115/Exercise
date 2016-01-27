@@ -21,8 +21,9 @@
 		000471681C56A6ED00A1A41D /* PPLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471671C56A6ED00A1A41D /* PPLPhoto.m */; };
 		0004716B1C56A70A00A1A41D /* PPLPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004716A1C56A70A00A1A41D /* PPLPhotoCollection.m */; };
 		0004716E1C56AA0800A1A41D /* PPLVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004716D1C56AA0800A1A41D /* PPLVideo.m */; };
-		000471711C56ADA400A1A41D /* PPLMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471701C56ADA400A1A41D /* PPLMediaItem.m */; };
+		000471711C56ADA400A1A41D /* PPLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471701C56ADA400A1A41D /* PPLObject.m */; };
 		000471751C56EF3000A1A41D /* PPLPhotoConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471741C56EF3000A1A41D /* PPLPhotoConverter.m */; };
+		00BD2E591C5898F800044E3A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BD2E581C5898F800044E3A /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,10 +70,12 @@
 		0004716A1C56A70A00A1A41D /* PPLPhotoCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLPhotoCollection.m; sourceTree = "<group>"; };
 		0004716C1C56AA0800A1A41D /* PPLVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLVideo.h; sourceTree = "<group>"; };
 		0004716D1C56AA0800A1A41D /* PPLVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLVideo.m; sourceTree = "<group>"; };
-		0004716F1C56ADA400A1A41D /* PPLMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLMediaItem.h; sourceTree = "<group>"; };
-		000471701C56ADA400A1A41D /* PPLMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLMediaItem.m; sourceTree = "<group>"; };
+		0004716F1C56ADA400A1A41D /* PPLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLObject.h; sourceTree = "<group>"; };
+		000471701C56ADA400A1A41D /* PPLObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLObject.m; sourceTree = "<group>"; };
 		000471731C56EF3000A1A41D /* PPLPhotoConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLPhotoConverter.h; sourceTree = "<group>"; };
 		000471741C56EF3000A1A41D /* PPLPhotoConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLPhotoConverter.m; sourceTree = "<group>"; };
+		00BD2E571C5898F800044E3A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		00BD2E581C5898F800044E3A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				000471301C56A46B00A1A41D /* AppDelegate.m */,
 				000471321C56A46B00A1A41D /* MasterViewController.h */,
 				000471331C56A46B00A1A41D /* MasterViewController.m */,
+				00BD2E571C5898F800044E3A /* DetailViewController.h */,
+				00BD2E581C5898F800044E3A /* DetailViewController.m */,
 				000471721C56B3E100A1A41D /* SDK */,
 				000471351C56A46B00A1A41D /* Main.storyboard */,
 				000471381C56A46B00A1A41D /* Assets.xcassets */,
@@ -172,8 +177,8 @@
 			children = (
 				0004715F1C56A5B400A1A41D /* PPLPhotoManager.h */,
 				000471601C56A5B400A1A41D /* PPLPhotoManager.m */,
-				0004716F1C56ADA400A1A41D /* PPLMediaItem.h */,
-				000471701C56ADA400A1A41D /* PPLMediaItem.m */,
+				0004716F1C56ADA400A1A41D /* PPLObject.h */,
+				000471701C56ADA400A1A41D /* PPLObject.m */,
 				000471661C56A6ED00A1A41D /* PPLPhoto.h */,
 				000471671C56A6ED00A1A41D /* PPLPhoto.m */,
 				0004716C1C56AA0800A1A41D /* PPLVideo.h */,
@@ -322,8 +327,9 @@
 				000471611C56A5B400A1A41D /* PPLPhotoManager.m in Sources */,
 				000471311C56A46B00A1A41D /* AppDelegate.m in Sources */,
 				000471751C56EF3000A1A41D /* PPLPhotoConverter.m in Sources */,
-				000471711C56ADA400A1A41D /* PPLMediaItem.m in Sources */,
+				000471711C56ADA400A1A41D /* PPLObject.m in Sources */,
 				0004712E1C56A46B00A1A41D /* main.m in Sources */,
+				00BD2E591C5898F800044E3A /* DetailViewController.m in Sources */,
 				0004716B1C56A70A00A1A41D /* PPLPhotoCollection.m in Sources */,
 				000471681C56A6ED00A1A41D /* PPLPhoto.m in Sources */,
 			);

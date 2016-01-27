@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PPLMediaItem.h"
+#import "PPLObject.h"
 @import Photos;
 
 @interface PPLPhotoCollection : NSObject

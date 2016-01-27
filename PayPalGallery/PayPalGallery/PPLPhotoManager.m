@@ -12,7 +12,7 @@
 @interface PPLPhotoManager () <PHPhotoLibraryChangeObserver>
 
 @property (nonatomic, strong) PHCachingImageManager *imageManager;
-
+@property (nonatomic, strong) id selectedItem;
 @end
 
 
@@ -73,10 +73,31 @@
     [PPLPhotoConverter imageWith:item size:size manager:self.imageManager completion:callback];
 }
 
+- (void)displaySelectedItemWithSize:(CGSize)size completion:(void (^)(UIImage *result, NSDictionary *info))callback
+{
+    if (self.selectedItem == nil) {
+        return;
+    } else {
+        [self displayPhoto:self.selectedItem size:size completion:callback];
+    }
+}
+
+- (void)setCurrentSelectedItem:(id)item
+{
+    self.selectedItem = item;
+}
+
+- (void)setSelectedItem:(id)selectedItem
+{
+    if (selectedItem != _selectedItem) {
+        _selectedItem = selectedItem;
+    }
+}
 #pragma mark PHPhotoLibraryChangeObserver Methods
 
 - (void)photoLibraryDidChange:(PHChange *)changeInstance
 {
+    
 }
 
 @end

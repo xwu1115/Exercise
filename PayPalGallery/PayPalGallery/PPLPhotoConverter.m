@@ -7,7 +7,7 @@
 //
 
 #import "PPLPhotoConverter.h"
-
+#import "PPLObject.h"
 @implementation PPLPhotoConverter
 
 + (void)imageWith:(id)item size:(CGSize)size manager:(PHCachingImageManager *)manager completion:(void (^)(UIImage *result, NSDictionary *info))callback
@@ -20,9 +20,9 @@
                               options:nil
                         resultHandler:callback];
 
-    } else if([item isKindOfClass:[NSURL class]]){
-        NSURL *url = item;
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+    } else if([item isKindOfClass:[PPLObject class]]){
+        PPLObject* object = item;
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:object.url]]];
         callback(image, nil);
     }
 }

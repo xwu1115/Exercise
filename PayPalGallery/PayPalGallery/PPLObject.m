@@ -6,10 +6,10 @@
 //  Copyright © 2016 Shawn Wu. All rights reserved.
 //
 
-#import "PPLMediaItem.h"
+#import "PPLObject.h"
 
-@implementation PPLMediaItem
-- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height filename:(NSString *)filename date:(NSDate *)creationDate
+@implementation PPLObject
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height filename:(NSString *)filename date:(NSDate *)creationDate url:(NSString *)url
 {
     self = [super init];
     if (self) {
@@ -17,6 +17,7 @@
         _height = height;
         _filename = filename;
         _creationDate = creationDate;
+        _url = url;
     }
     return self;
 }

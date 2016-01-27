@@ -15,11 +15,12 @@ enum {
 };
 typedef NSInteger Type;//check grammar
 
-@interface PPLMediaItem : NSObject
+@interface PPLObject : NSObject
 
 @property (nonatomic, readonly) CGFloat width;
 @property (nonatomic, readonly) CGFloat height;
 @property (nonatomic, strong) NSString *filename;
+@property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSDate *creationDate;
 @property Type type;
 
