@@ -13,7 +13,8 @@
 #import "PPLCollectionViewCell.h"
 
 static NSString* cellReuseIdentifier = @"ppl";
-static NSString* segueIdentifier = @"detail";
+static NSString* detailSegueIdentifier = @"detail";
+static NSString* albumSegueIdentifier = @"album";
 static NSString* defaultGalleryIdentifier = @"AllPhotos";
 
 @interface MasterViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -42,10 +43,12 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:segueIdentifier])
+    if([segue.identifier isEqualToString:detailSegueIdentifier])
     {
         DetailViewController *detailViewController = segue.destinationViewController;
         detailViewController.manager = self.manager;
+    }else if([segue.identifier isEqualToString:albumSegueIdentifier]){
+        
     }
 }
 
@@ -72,7 +75,7 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.manager setCurrentSelectedItem: [self.selectedAssets objectAtIndex:indexPath.item]];
-    [self performSegueWithIdentifier:segueIdentifier sender:nil];
+    [self performSegueWithIdentifier:detailSegueIdentifier sender:nil];
 }
 
 @end

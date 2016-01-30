@@ -7,11 +7,14 @@
 //
 
 #import "DetailViewController.h"
+#import "PPLDetailInformationView.h"
+
+#import "Masonry.h"
 
 @interface DetailViewController()
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
-@property (nonatomic) BOOL isInfoHidden;
+@property (nonatomic, strong) PPLDetailInformationView *detailView;
 
 @end
 
@@ -25,8 +28,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.detailView = [[PPLDetailInformationView alloc] init];
+    [self.view addSubview:self.detailView];
+    [self autoLayouts];
     [self displayImage];
-    self.isInfoHidden = true;
 }
 
 - (void)displayImage
@@ -60,12 +65,12 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
 {
-    if (self.isInfoHidden == YES) {
+    if (self.detailView.isInfoHidden == YES) {
         [self showInformation];
-        self.isInfoHidden = NO;
+        self.detailView.isInfoHidden = NO;
     }else{
         [self hideInformation];
-        self.isInfoHidden = YES;
+        self.detailView.isInfoHidden = YES;
     }
 }
 
@@ -91,4 +96,15 @@
     }
     [self displayImage];
 }
+
+- (void)autoLayouts
+{
+    [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.width.equalTo(self.view.mas_width);
+        make.height.equalTo(@(200));
+        make.centerX.equalTo(self.view.mas_centerX);
+    }];
+}
+
 @end

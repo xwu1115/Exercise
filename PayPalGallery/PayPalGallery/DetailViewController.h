@@ -12,4 +12,5 @@
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, strong) PPLPhotoManager *manager;
+
 @end

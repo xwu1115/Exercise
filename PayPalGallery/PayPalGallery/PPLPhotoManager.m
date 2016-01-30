@@ -141,11 +141,12 @@
 {
     return [PPLPhotoConverter getLocationFromItem:photo];
 }
+
 #pragma mark PHPhotoLibraryChangeObserver Methods
 
 - (void)photoLibraryDidChange:(PHChange *)changeInstance
 {
-    
+    [self.delegate handlePhotoChanged];
 }
 
 @end

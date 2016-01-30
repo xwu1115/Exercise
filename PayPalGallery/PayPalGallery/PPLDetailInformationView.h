@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DetailViewDelegate
+
+- (void)handleExitButtonPressed;
+
+@end
+
 @interface PPLDetailInformationView : UIView
+
+@property (nonatomic) BOOL isInfoHidden;
+@property (nonatomic, weak) id<DetailViewDelegate>delegate;
 
 @end

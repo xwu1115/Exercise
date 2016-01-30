@@ -13,8 +13,17 @@
 
 @import Photos;
 
+@protocol PPLPhotoManagerDelegate
+
+- (void) handleOauthLogin;
+- (void) handlePhotoChanged;
+
+@end
+
+
 @interface PPLPhotoManager : NSObject
 @property (nonatomic, strong) NSDictionary *assetCollections;
+@property (nonatomic, weak) id<PPLPhotoManagerDelegate>delegate;
 
 /**
  *  Display a photo.
