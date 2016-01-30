@@ -9,12 +9,15 @@
 #import "PPLPhotoManager.h"
 #import "PPLPhotoConverter.h"
 
+#import "PPLInstagPhotoHelper.h"
+
 @interface PPLPhotoManager () <PHPhotoLibraryChangeObserver>
 
 @property (nonatomic, strong) PHCachingImageManager *imageManager;
 @property (nonatomic, strong) id selectedItem;
-@end
+@property (nonatomic, strong) NSArray *selectedAsset;
 
+@end
 
 @implementation PPLPhotoManager
 
@@ -23,6 +26,7 @@
     self = [super init];
     if (self) {
         [self setup];
+        [self fetchInstagramPhoto];
     }
     return self;
 }
@@ -37,6 +41,27 @@
     self.imageManager = [[PHCachingImageManager alloc] init];
     self.assetCollections = [self fetchLocalPhotoGallery];
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
+}
+
+- (NSArray *)getAssetFromIdentifier:(NSString *)indentifier
+{
+    self.selectedAsset = [self.assetCollections objectForKey:indentifier];
+    return self.selectedAsset;
+}
+
+- (void)setSelectedAsset:(NSArray *)selectedAsset
+{
+    if(_selectedAsset != selectedAsset)
+    {
+        _selectedAsset = selectedAsset;
+    }
+}
+
+- (void)setSelectedItem:(id)selectedItem
+{
+    if (selectedItem != _selectedItem) {
+        _selectedItem = selectedItem;
+    }
 }
 
 - (NSDictionary *)fetchLocalPhotoGallery
@@ -57,6 +82,11 @@
     [self saveCollectionResult:topLevelUserCollections toDictionary:dictionary];
     
     return [NSDictionary dictionaryWithDictionary:dictionary];
+}
+
+- (void) fetchInstagramPhoto
+{
+    [PPLInstagPhotoHelper fetchInstagramPhoto];
 }
 
 - (void)saveCollectionResult:(PHFetchResult *)result toDictionary:(NSMutableDictionary *)dictionary
@@ -87,11 +117,29 @@
     self.selectedItem = item;
 }
 
-- (void)setSelectedItem:(id)selectedItem
+- (id)navigateSelectedItemToNext
 {
-    if (selectedItem != _selectedItem) {
-        _selectedItem = selectedItem;
+    int index = (int)[self.selectedAsset indexOfObject:self.selectedItem]+1;
+    if(index > [self.selectedAsset count]) return nil;
+    else {
+        self.selectedItem = [self.selectedAsset objectAtIndex:index];
+        return self.selectedItem;
     }
+}
+
+- (id)navigateSelectedItemToPrevious
+{
+    int index = (int)[self.selectedAsset indexOfObject:self.selectedItem]-1;
+    if(index < 0) return nil;
+    else {
+        self.selectedItem = [self.selectedAsset objectAtIndex:index];
+        return self.selectedItem;
+    }
+}
+
+- (CLLocation *)getLocationFromPhoto:(id)photo
+{
+    return [PPLPhotoConverter getLocationFromItem:photo];
 }
 #pragma mark PHPhotoLibraryChangeObserver Methods
 

@@ -30,6 +30,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>InstagramAppClientId</key>
+	<string>584ad36f89c74c73bf51cd6b47b40be7</string>
+	<key>InstagramAppRedirectURL</key>
+	<string>http://www.gatech.edu</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

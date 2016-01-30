@@ -26,4 +26,15 @@
         callback(image, nil);
     }
 }
+
++ (CLLocation *)getLocationFromItem:(id)item
+{
+    if ([item isKindOfClass: [PHObject class]]) {
+        PHAsset* asset = item;
+        return asset.location;
+    }else {
+        return nil;
+    }
+}
+
 @end

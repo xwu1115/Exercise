@@ -10,12 +10,18 @@
 #import "PPLPhotoManager.h"
 #import "DetailViewController.h"
 
-static NSString* CellReuseIdentifier = @"ppl";
+#import "PPLCollectionViewCell.h"
+
+static NSString* cellReuseIdentifier = @"ppl";
+static NSString* segueIdentifier = @"detail";
+static NSString* defaultGalleryIdentifier = @"AllPhotos";
 
 @interface MasterViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
 @property (nonatomic, strong) PPLPhotoManager *manager;
 @property (nonatomic, strong) NSArray *selectedAssets;
-@property (nonatomic, weak) UICollectionView *gridView;
+@property (nonatomic, weak) IBOutlet UICollectionView *gridView;
+
 @end
 
 @implementation MasterViewController
@@ -23,17 +29,20 @@ static NSString* CellReuseIdentifier = @"ppl";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.manager = [[PPLPhotoManager alloc] init];
-    NSLog(@"%@", self.manager);
-    self.selectedAssets = [self.manager.assetCollections objectForKey:@"AllPhotos"];
+    self.selectedAssets = [self.manager getAssetFromIdentifier:defaultGalleryIdentifier];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)viewWillAppear:(BOOL)animated
+{
+}
+
+- (void)didReceiveMemoryWarning
+{
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"detail"])
+    if([segue.identifier isEqualToString:segueIdentifier])
     {
         DetailViewController *detailViewController = segue.destinationViewController;
         detailViewController.manager = self.manager;
@@ -42,16 +51,18 @@ static NSString* CellReuseIdentifier = @"ppl";
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 100;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.selectedAssets count];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellReuseIdentifier forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PPLCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     id item = [self.selectedAssets objectAtIndex:indexPath.item];
 
-    [self.manager displayPhoto:item size:CGSizeMake(100, 100) completion:^(UIImage *result, NSDictionary *info) {
-        cell.backgroundView = [[UIImageView alloc] initWithImage:result];
+    [self.manager displayPhoto:item size:CGSizeMake(120, 120) completion:^(UIImage *result, NSDictionary *info) {
+        cell.thumbnailImage = result;
         
     }];
     
@@ -60,12 +71,8 @@ static NSString* CellReuseIdentifier = @"ppl";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    
-    NSLog(@"touched cell %@ at indexPath %@", cell, indexPath);
-    
     [self.manager setCurrentSelectedItem: [self.selectedAssets objectAtIndex:indexPath.item]];
-    [self performSegueWithIdentifier:@"detail" sender:nil];
+    [self performSegueWithIdentifier:segueIdentifier sender:nil];
 }
 
 @end
