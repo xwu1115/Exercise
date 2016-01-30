@@ -11,7 +11,9 @@
 
 #import "Masonry.h"
 
-@interface DetailViewController()
+static NSString *timeFormat = @"MMM d yyyy HH:mm";
+
+@interface DetailViewController()<DetailViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) PPLDetailInformationView *detailView;
@@ -29,8 +31,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.detailView = [[PPLDetailInformationView alloc] init];
+    self.detailView.delegate = self;
     [self.view addSubview:self.detailView];
-    [self autoLayouts];
     [self displayImage];
 }
 
@@ -42,6 +44,26 @@
     [self.manager displaySelectedItemWithSize:CGSizeMake(width, height) completion:^(UIImage *result, NSDictionary *info) {
         self.imageView.image = result;
     }];
+    
+    [self.manager locationNameUpdatedWithSelectedPhotoAndCompletion:^(NSString *result) {
+        [self.detailView.locationLabel setText:result];
+    }];
+    
+    [self.manager creationTimeFromSelectedPhotoAndFormat:timeFormat completion:^(NSString *result) {
+        [self.detailView.timeLabel setText:result];
+    }];
+}
+
+- (void)updateViewConstraints
+{
+    [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.width.equalTo(self.view.mas_width);
+        make.height.equalTo(@(120));
+        make.centerX.equalTo(self.view.mas_centerX);
+    }];
+ 
+    [super updateViewConstraints];
 }
 
 - (void)setupGestureForImageView
@@ -66,26 +88,28 @@
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
 {
     if (self.detailView.isInfoHidden == YES) {
-        [self showInformation];
-        self.detailView.isInfoHidden = NO;
+        [self setInformationDetailViewAlpha:1];
     }else{
-        [self hideInformation];
-        self.detailView.isInfoHidden = YES;
+        [self setInformationDetailViewAlpha:0];
     }
 }
 
-- (void)showInformation
+- (void)setInformationDetailViewAlpha:(CGFloat)alpha
 {
-    
-}
-
-- (void)hideInformation
-{
-    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.detailView.alpha = alpha;
+    } completion:^(BOOL finished) {
+        if(alpha == 1){
+            self.detailView.isInfoHidden = NO;
+        }else{
+            self.detailView.isInfoHidden = YES;
+        }
+    }];
 }
 
 - (void)handleSwipe:(UISwipeGestureRecognizer *)recognizer
 {
+    //TODO: use photo gallery way to implment it soon.
     if(recognizer.direction == UISwipeGestureRecognizerDirectionLeft)
     {
         [self.manager navigateSelectedItemToNext];
@@ -97,14 +121,12 @@
     [self displayImage];
 }
 
-- (void)autoLayouts
+#pragma mark PPLDetailInformationViewDelegate Methods
+
+- (void)handleExitButtonPressed
 {
-    [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        make.width.equalTo(self.view.mas_width);
-        make.height.equalTo(@(200));
-        make.centerX.equalTo(self.view.mas_centerX);
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

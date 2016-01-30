@@ -11,6 +11,8 @@
 
 #import "PPLInstagPhotoHelper.h"
 
+@import CoreLocation;
+
 @interface PPLPhotoManager () <PHPhotoLibraryChangeObserver>
 
 @property (nonatomic, strong) PHCachingImageManager *imageManager;
@@ -84,8 +86,12 @@
     return [NSDictionary dictionaryWithDictionary:dictionary];
 }
 
-- (void) fetchInstagramPhoto
+- (void)fetchInstagramPhoto
 {
+    if ((BOOL)[[NSUserDefaults standardUserDefaults] boolForKey:@"instagram"] == NO) {
+        [self.delegate handleOauthLogin];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"instagram"];
+    }
     [PPLInstagPhotoHelper fetchInstagramPhoto];
 }
 
@@ -140,6 +146,41 @@
 - (CLLocation *)getLocationFromPhoto:(id)photo
 {
     return [PPLPhotoConverter getLocationFromItem:photo];
+}
+
+- (void)locationNameUpdatedWithPhoto:(id)photo completion:(void (^)(NSString*result))callback
+{
+    CLLocation *location = [self getLocationFromPhoto:photo];
+    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation: location completionHandler:^(NSArray *placemarks, NSError *error) {
+        for (CLPlacemark * placemark in placemarks) {
+            NSString * address = [placemark name];
+            address = [address stringByAppendingString:@" "];
+            address = ([placemark locality]== nil)?address:[address stringByAppendingString:[placemark locality]];
+            callback(address);
+        }
+    }];
+}
+
+- (void)locationNameUpdatedWithSelectedPhotoAndCompletion:(void (^)(NSString*result))callback
+{
+    [self locationNameUpdatedWithPhoto:self.selectedItem completion:callback];
+}
+
+- (void)creationTimeFromPhoto:(id)photo format:(NSString*)format completion:(void (^)(NSString*result))callback
+{
+    NSDate *date = [PPLPhotoConverter getCreationTimeFromItem:photo];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    callback(stringFromDate);
+}
+
+- (void)creationTimeFromSelectedPhotoAndFormat:(NSString*)format completion:(void (^)(NSString*result))callback
+{
+    [self creationTimeFromPhoto:self.selectedItem format:format completion:callback];
 }
 
 #pragma mark PHPhotoLibraryChangeObserver Methods

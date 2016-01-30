@@ -19,4 +19,7 @@
 @property (nonatomic) BOOL isInfoHidden;
 @property (nonatomic, weak) id<DetailViewDelegate>delegate;
 
+@property (nonatomic, strong) UILabel *locationLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
+
 @end

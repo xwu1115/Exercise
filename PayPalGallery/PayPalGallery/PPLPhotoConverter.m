@@ -37,4 +37,15 @@
     }
 }
 
+
++ (NSDate *)getCreationTimeFromItem:(id)item
+{
+    if ([item isKindOfClass: [PHObject class]]) {
+        PHAsset* asset = item;
+        return asset.creationDate;
+    }else {
+        return nil;
+    }
+}
+
 @end

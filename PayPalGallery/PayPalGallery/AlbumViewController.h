@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPLPhotoManager.h"
 
 @interface AlbumViewController : UIViewController
+
+@property (nonatomic, strong) PPLPhotoManager *manager;
 
 @end

@@ -15,5 +15,6 @@
 + (void)imageWith:(id)item size:(CGSize)size manager:(PHCachingImageManager *)manager completion:(void (^)(UIImage *result, NSDictionary *info))callback;
 
 + (CLLocation *)getLocationFromItem:(id)item;
++ (NSDate *)getCreationTimeFromItem:(id)item;
 
 @end

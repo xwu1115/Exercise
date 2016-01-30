@@ -12,6 +12,9 @@
 
 #import "PPLCollectionViewCell.h"
 
+static CGFloat thumbnailWidth = 100;
+static CGFloat thumbnailHeight = 100;
+
 static NSString* cellReuseIdentifier = @"ppl";
 static NSString* detailSegueIdentifier = @"detail";
 static NSString* albumSegueIdentifier = @"album";
@@ -29,8 +32,16 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.manager = [[PPLPhotoManager alloc] init];
-    self.selectedAssets = [self.manager getAssetFromIdentifier:defaultGalleryIdentifier];
+    
+    dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+    dispatch_async(myQueue, ^{
+        self.manager = [[PPLPhotoManager alloc] init];
+        self.selectedAssets = [self.manager getAssetFromIdentifier:defaultGalleryIdentifier];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.gridView reloadData];
+        });
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -64,7 +75,7 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
     PPLCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     id item = [self.selectedAssets objectAtIndex:indexPath.item];
 
-    [self.manager displayPhoto:item size:CGSizeMake(120, 120) completion:^(UIImage *result, NSDictionary *info) {
+    [self.manager displayPhoto:item size:CGSizeMake(thumbnailWidth, thumbnailHeight) completion:^(UIImage *result, NSDictionary *info) {
         cell.thumbnailImage = result;
         
     }];

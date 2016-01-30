@@ -54,4 +54,10 @@
 
 - (CLLocation *)getLocationFromPhoto:(id)photo;
 
+- (void)locationNameUpdatedWithPhoto:(id)photo completion:(void (^)(NSString*result))callback;
+- (void)locationNameUpdatedWithSelectedPhotoAndCompletion:(void (^)(NSString*result))callback;
+
+- (void)creationTimeFromPhoto:(id)photo format:(NSString*)format completion:(void (^)(NSString*result))callback;
+- (void)creationTimeFromSelectedPhotoAndFormat:(NSString*)format completion:(void (^)(NSString*result))callback;
+
 @end
