@@ -29,6 +29,7 @@
 		00E1F3521C5C9CB7006E5629 /* PPLInstagPhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3511C5C9CB7006E5629 /* PPLInstagPhotoHelper.m */; };
 		00E1F3551C5CA0D8006E5629 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3541C5CA0D8006E5629 /* AlbumViewController.m */; };
 		00E1F3571C5D621A006E5629 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E1F3561C5D621A006E5629 /* CoreLocation.framework */; };
+		00E1F35A1C5D7449006E5629 /* PPLDetailImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3591C5D7449006E5629 /* PPLDetailImageView.m */; };
 		997188550498B2438978CAE9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0765F78603F60BC094EAB1EA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,8 @@
 		00E1F3531C5CA0D8006E5629 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
 		00E1F3541C5CA0D8006E5629 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
 		00E1F3561C5D621A006E5629 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		00E1F3581C5D7449006E5629 /* PPLDetailImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLDetailImageView.h; sourceTree = "<group>"; };
+		00E1F3591C5D7449006E5629 /* PPLDetailImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLDetailImageView.m; sourceTree = "<group>"; };
 		0765F78603F60BC094EAB1EA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C874A4FBA520ED5ADBF6AAEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DC42E95339BA514BFF154689 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 				00E1F3481C5C75BF006E5629 /* PPLCollectionViewCell.m */,
 				00E1F34D1C5C8D60006E5629 /* PPLDetailInformationView.h */,
 				00E1F34E1C5C8D60006E5629 /* PPLDetailInformationView.m */,
+				00E1F3581C5D7449006E5629 /* PPLDetailImageView.h */,
+				00E1F3591C5D7449006E5629 /* PPLDetailImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				000471751C56EF3000A1A41D /* PPLPhotoConverter.m in Sources */,
 				00E1F3521C5C9CB7006E5629 /* PPLInstagPhotoHelper.m in Sources */,
 				000471711C56ADA400A1A41D /* PPLObject.m in Sources */,
+				00E1F35A1C5D7449006E5629 /* PPLDetailImageView.m in Sources */,
 				0004712E1C56A46B00A1A41D /* main.m in Sources */,
 				00BD2E591C5898F800044E3A /* DetailViewController.m in Sources */,
 				0004716B1C56A70A00A1A41D /* PPLPhotoCollection.m in Sources */,

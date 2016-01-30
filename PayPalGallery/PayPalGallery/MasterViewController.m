@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "PPLPhotoManager.h"
 #import "DetailViewController.h"
+#import "AlbumViewController.h"
 
 #import "PPLCollectionViewCell.h"
 
@@ -32,16 +33,9 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
-    dispatch_async(myQueue, ^{
-        self.manager = [[PPLPhotoManager alloc] init];
-        self.selectedAssets = [self.manager getAssetFromIdentifier:defaultGalleryIdentifier];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.gridView reloadData];
-        });
-    });
+    if (self.galleryIdentifier == nil) {
+        self.galleryIdentifier = defaultGalleryIdentifier;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,6 +46,22 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
 {
 }
 
+- (void)loadDataWith:(NSString *)galleryIdentifier
+{
+    dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+    dispatch_async(myQueue, ^{
+        if(self.manager == nil) {
+            self.manager = [[PPLPhotoManager alloc] init];
+        }
+        self.selectedAssets = [self.manager getAssetFromIdentifier:galleryIdentifier];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.gridView reloadData];
+        });
+    });
+
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:detailSegueIdentifier])
@@ -59,7 +69,16 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
         DetailViewController *detailViewController = segue.destinationViewController;
         detailViewController.manager = self.manager;
     }else if([segue.identifier isEqualToString:albumSegueIdentifier]){
-        
+        AlbumViewController *albumViewController = segue.destinationViewController;
+        albumViewController.manager = self.manager;
+    }
+}
+
+- (void)setGalleryIdentifier:(NSString *)galleryIdentifier
+{
+    if(![_galleryIdentifier isEqualToString:galleryIdentifier])
+    {
+        [self loadDataWith:_galleryIdentifier];
     }
 }
 

@@ -28,7 +28,7 @@
     self = [super init];
     if (self) {
         [self setup];
-        [self fetchInstagramPhoto];
+        //[self fetchInstagramPhoto];
     }
     return self;
 }

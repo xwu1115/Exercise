@@ -24,5 +24,4 @@ typedef NSInteger Type;//check grammar
 @property (nonatomic, strong) NSDate *creationDate;
 @property Type type;
 
-
 @end

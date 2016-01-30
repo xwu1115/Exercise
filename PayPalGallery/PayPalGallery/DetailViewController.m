@@ -32,6 +32,7 @@ static NSString *timeFormat = @"MMM d yyyy HH:mm";
 {
     self.detailView = [[PPLDetailInformationView alloc] init];
     self.detailView.delegate = self;
+    self.detailView.alpha = 0;
     [self.view addSubview:self.detailView];
     [self displayImage];
 }
@@ -96,7 +97,7 @@ static NSString *timeFormat = @"MMM d yyyy HH:mm";
 
 - (void)setInformationDetailViewAlpha:(CGFloat)alpha
 {
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.detailView.alpha = alpha;
     } completion:^(BOOL finished) {
         if(alpha == 1){

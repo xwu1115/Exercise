@@ -8,6 +8,12 @@
 
 #import "AlbumViewController.h"
 
+@interface AlbumViewController()
+
+@end
+
 @implementation AlbumViewController
+
+
 
 @end

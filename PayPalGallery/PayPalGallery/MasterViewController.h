@@ -10,6 +10,7 @@
 
 @interface MasterViewController : UIViewController
 
+@property (nonatomic, strong) NSString *galleryIdentifier;
 
 @end
 
