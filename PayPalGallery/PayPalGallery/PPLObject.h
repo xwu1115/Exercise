@@ -9,19 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @import Photos;
-enum {
-    video = 0,
-    photo = 1
-};
-typedef NSInteger Type;//check grammar
 
 @interface PPLObject : NSObject
 
-@property (nonatomic, readonly) CGFloat width;
-@property (nonatomic, readonly) CGFloat height;
-@property (nonatomic, strong) NSString *filename;
+@property (nonatomic) CGFloat width;
+@property (nonatomic) CGFloat height;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSDate *creationDate;
-@property Type type;
+@property (nonatomic, strong) CLLocation *location;
+
+@property (nonatomic, strong) PHAsset *asset;
 
 @end

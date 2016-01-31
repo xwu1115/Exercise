@@ -19,7 +19,6 @@
 		000471641C56A61F00A1A41D /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000471621C56A61F00A1A41D /* Photos.framework */; };
 		000471651C56A61F00A1A41D /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000471631C56A61F00A1A41D /* PhotosUI.framework */; };
 		000471681C56A6ED00A1A41D /* PPLPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471671C56A6ED00A1A41D /* PPLPhoto.m */; };
-		0004716B1C56A70A00A1A41D /* PPLPhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004716A1C56A70A00A1A41D /* PPLPhotoCollection.m */; };
 		0004716E1C56AA0800A1A41D /* PPLVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0004716D1C56AA0800A1A41D /* PPLVideo.m */; };
 		000471711C56ADA400A1A41D /* PPLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471701C56ADA400A1A41D /* PPLObject.m */; };
 		000471751C56EF3000A1A41D /* PPLPhotoConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 000471741C56EF3000A1A41D /* PPLPhotoConverter.m */; };
@@ -30,6 +29,11 @@
 		00E1F3551C5CA0D8006E5629 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3541C5CA0D8006E5629 /* AlbumViewController.m */; };
 		00E1F3571C5D621A006E5629 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E1F3561C5D621A006E5629 /* CoreLocation.framework */; };
 		00E1F35A1C5D7449006E5629 /* PPLDetailImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3591C5D7449006E5629 /* PPLDetailImageView.m */; };
+		00E1F35C1C5DA5E3006E5629 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E1F35B1C5DA5E3006E5629 /* AssetsLibrary.framework */; };
+		00E1F35F1C5DF475006E5629 /* PPLFlickerPhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F35E1C5DF475006E5629 /* PPLFlickerPhotoHelper.m */; };
+		00E1F3611C5DFAE3006E5629 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E1F3601C5DFAE3006E5629 /* UIKit.framework */; };
+		00E1F3641C5E7576006E5629 /* PPLAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3631C5E7576006E5629 /* PPLAlbumTableViewCell.m */; };
+		00E1F3671C5E776E006E5629 /* PPLAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3661C5E776E006E5629 /* PPLAlbum.m */; };
 		997188550498B2438978CAE9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0765F78603F60BC094EAB1EA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,8 +77,6 @@
 		000471631C56A61F00A1A41D /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		000471661C56A6ED00A1A41D /* PPLPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLPhoto.h; sourceTree = "<group>"; };
 		000471671C56A6ED00A1A41D /* PPLPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLPhoto.m; sourceTree = "<group>"; };
-		000471691C56A70A00A1A41D /* PPLPhotoCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLPhotoCollection.h; sourceTree = "<group>"; };
-		0004716A1C56A70A00A1A41D /* PPLPhotoCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLPhotoCollection.m; sourceTree = "<group>"; };
 		0004716C1C56AA0800A1A41D /* PPLVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLVideo.h; sourceTree = "<group>"; };
 		0004716D1C56AA0800A1A41D /* PPLVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLVideo.m; sourceTree = "<group>"; };
 		0004716F1C56ADA400A1A41D /* PPLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLObject.h; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 		00E1F3561C5D621A006E5629 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		00E1F3581C5D7449006E5629 /* PPLDetailImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLDetailImageView.h; sourceTree = "<group>"; };
 		00E1F3591C5D7449006E5629 /* PPLDetailImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLDetailImageView.m; sourceTree = "<group>"; };
+		00E1F35B1C5DA5E3006E5629 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		00E1F35D1C5DF475006E5629 /* PPLFlickerPhotoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLFlickerPhotoHelper.h; sourceTree = "<group>"; };
+		00E1F35E1C5DF475006E5629 /* PPLFlickerPhotoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLFlickerPhotoHelper.m; sourceTree = "<group>"; };
+		00E1F3601C5DFAE3006E5629 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		00E1F3621C5E7576006E5629 /* PPLAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLAlbumTableViewCell.h; sourceTree = "<group>"; };
+		00E1F3631C5E7576006E5629 /* PPLAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLAlbumTableViewCell.m; sourceTree = "<group>"; };
+		00E1F3651C5E776E006E5629 /* PPLAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLAlbum.h; sourceTree = "<group>"; };
+		00E1F3661C5E776E006E5629 /* PPLAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLAlbum.m; sourceTree = "<group>"; };
 		0765F78603F60BC094EAB1EA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C874A4FBA520ED5ADBF6AAEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DC42E95339BA514BFF154689 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00E1F3611C5DFAE3006E5629 /* UIKit.framework in Frameworks */,
+				00E1F35C1C5DA5E3006E5629 /* AssetsLibrary.framework in Frameworks */,
 				00E1F3571C5D621A006E5629 /* CoreLocation.framework in Frameworks */,
 				000471641C56A61F00A1A41D /* Photos.framework in Frameworks */,
 				000471651C56A61F00A1A41D /* PhotosUI.framework in Frameworks */,
@@ -220,6 +232,8 @@
 				00E1F34E1C5C8D60006E5629 /* PPLDetailInformationView.m */,
 				00E1F3581C5D7449006E5629 /* PPLDetailImageView.h */,
 				00E1F3591C5D7449006E5629 /* PPLDetailImageView.m */,
+				00E1F3621C5E7576006E5629 /* PPLAlbumTableViewCell.h */,
+				00E1F3631C5E7576006E5629 /* PPLAlbumTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -233,8 +247,8 @@
 				000471671C56A6ED00A1A41D /* PPLPhoto.m */,
 				0004716C1C56AA0800A1A41D /* PPLVideo.h */,
 				0004716D1C56AA0800A1A41D /* PPLVideo.m */,
-				000471691C56A70A00A1A41D /* PPLPhotoCollection.h */,
-				0004716A1C56A70A00A1A41D /* PPLPhotoCollection.m */,
+				00E1F3651C5E776E006E5629 /* PPLAlbum.h */,
+				00E1F3661C5E776E006E5629 /* PPLAlbum.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -246,6 +260,8 @@
 				000471741C56EF3000A1A41D /* PPLPhotoConverter.m */,
 				00E1F3501C5C9CB7006E5629 /* PPLInstagPhotoHelper.h */,
 				00E1F3511C5C9CB7006E5629 /* PPLInstagPhotoHelper.m */,
+				00E1F35D1C5DF475006E5629 /* PPLFlickerPhotoHelper.h */,
+				00E1F35E1C5DF475006E5629 /* PPLFlickerPhotoHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -253,6 +269,8 @@
 		8C47DDAE106DB3262BBA677D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00E1F3601C5DFAE3006E5629 /* UIKit.framework */,
+				00E1F35B1C5DA5E3006E5629 /* AssetsLibrary.framework */,
 				00E1F3561C5D621A006E5629 /* CoreLocation.framework */,
 				0765F78603F60BC094EAB1EA /* libPods.a */,
 			);
@@ -451,8 +469,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0004716E1C56AA0800A1A41D /* PPLVideo.m in Sources */,
+				00E1F3671C5E776E006E5629 /* PPLAlbum.m in Sources */,
 				000471341C56A46B00A1A41D /* MasterViewController.m in Sources */,
+				00E1F3641C5E7576006E5629 /* PPLAlbumTableViewCell.m in Sources */,
 				00E1F3551C5CA0D8006E5629 /* AlbumViewController.m in Sources */,
+				00E1F35F1C5DF475006E5629 /* PPLFlickerPhotoHelper.m in Sources */,
 				000471611C56A5B400A1A41D /* PPLPhotoManager.m in Sources */,
 				000471311C56A46B00A1A41D /* AppDelegate.m in Sources */,
 				000471751C56EF3000A1A41D /* PPLPhotoConverter.m in Sources */,
@@ -461,7 +482,6 @@
 				00E1F35A1C5D7449006E5629 /* PPLDetailImageView.m in Sources */,
 				0004712E1C56A46B00A1A41D /* main.m in Sources */,
 				00BD2E591C5898F800044E3A /* DetailViewController.m in Sources */,
-				0004716B1C56A70A00A1A41D /* PPLPhotoCollection.m in Sources */,
 				000471681C56A6ED00A1A41D /* PPLPhoto.m in Sources */,
 				00E1F34F1C5C8D60006E5629 /* PPLDetailInformationView.m in Sources */,
 				00E1F3491C5C75BF006E5629 /* PPLCollectionViewCell.m in Sources */,

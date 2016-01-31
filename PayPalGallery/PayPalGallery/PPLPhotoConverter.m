@@ -8,44 +8,62 @@
 
 #import "PPLPhotoConverter.h"
 #import "PPLObject.h"
+
 @implementation PPLPhotoConverter
 
-+ (void)imageWith:(id)item size:(CGSize)size manager:(PHCachingImageManager *)manager completion:(void (^)(UIImage *result, NSDictionary *info))callback
++ (void)imageWith:(PPLObject *)item size:(CGSize)size manager:(PHCachingImageManager *)manager completion:(void (^)(UIImage *result, NSDictionary *info))callback
 {
-    if([item isKindOfClass:[PHObject class]]){
-        PHAsset* asset = item;
+    if(item.asset != nil){
+        PHAsset* asset = item.asset;
         [manager requestImageForAsset:asset
                            targetSize:size
                           contentMode:PHImageContentModeAspectFill
                               options:nil
                         resultHandler:callback];
 
-    } else if([item isKindOfClass:[PPLObject class]]){
+    } else {
         PPLObject* object = item;
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:object.url]]];
         callback(image, nil);
     }
 }
 
-+ (CLLocation *)getLocationFromItem:(id)item
++ (CLLocation *)getLocationFromItem:(PPLObject *)item
 {
-    if ([item isKindOfClass: [PHObject class]]) {
-        PHAsset* asset = item;
+    if (item.asset != nil) {
+        PHAsset* asset = item.asset;
         return asset.location;
     }else {
-        return nil;
+        return item.location;
     }
 }
 
-
-+ (NSDate *)getCreationTimeFromItem:(id)item
++ (PPLObject *)convert:(id)item
 {
-    if ([item isKindOfClass: [PHObject class]]) {
-        PHAsset* asset = item;
+    PPLObject *obj = [[PPLObject alloc] init];
+    if([item isKindOfClass:[PHAsset class]]){
+        PHAsset *asset = item;
+        obj.creationDate = asset.creationDate;
+        obj.width = asset.pixelWidth;
+        obj.height = asset.pixelHeight;
+        obj.url = [NSString stringWithFormat:@"assets-library://asset/asset.JPG?id=%@",asset.localIdentifier];
+        obj.location = asset.location;
+        obj.asset = asset;
+    }else{
+        //TODO: add funtion parse JSON format data
+    }
+    return obj;
+}
+
++ (NSDate *)getCreationTimeFromItem:(PPLObject *)item
+{
+    if (item.asset != nil) {
+        PHAsset* asset = item.asset;
         return asset.creationDate;
     }else {
-        return nil;
+        //TODO: add funtion parse JSON format data
     }
+    return nil;
 }
 
 @end

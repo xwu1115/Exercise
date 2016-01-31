@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPLPhotoManager.h"
 
 @interface MasterViewController : UIViewController
 
 @property (nonatomic, strong) NSString *galleryIdentifier;
+@property (nonatomic, strong) PPLPhotoManager *manager;
 
 @end
 

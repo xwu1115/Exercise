@@ -16,7 +16,8 @@
 
 @implementation PPLCollectionViewCell
 
-- (void)setThumbnailImage:(UIImage *)thumbnailImage {
+- (void)setThumbnailImage:(UIImage *)thumbnailImage
+{
     _thumbnailImage = thumbnailImage;
     self.imageView.image = thumbnailImage;
 }

@@ -12,5 +12,6 @@
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, strong) PPLPhotoManager *manager;
-
+@property (nonatomic, strong) NSArray *selectedAsset;
+@property (nonatomic, strong) PPLObject *selectedItem;
 @end

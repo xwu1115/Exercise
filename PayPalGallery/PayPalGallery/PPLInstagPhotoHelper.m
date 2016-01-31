@@ -14,10 +14,9 @@
 + (void)fetchInstagramPhoto
 {
     InstagramEngine *engine = [InstagramEngine sharedEngine];
-    [engine getSelfFeedWithSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
-
+    [engine getPopularMediaWithSuccess:^(NSArray<InstagramMedia *> * _Nonnull media, InstagramPaginationInfo * _Nonnull paginationInfo) {
         
-    } failure:^(NSError *error, NSInteger statusCode) {
+    } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
         
     }];
 }

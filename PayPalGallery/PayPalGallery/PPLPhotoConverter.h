@@ -7,14 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PPLObject.h"
 
 @import Photos;
 
 @interface PPLPhotoConverter : NSObject
 
-+ (void)imageWith:(id)item size:(CGSize)size manager:(PHCachingImageManager *)manager completion:(void (^)(UIImage *result, NSDictionary *info))callback;
++ (void)imageWith:(PPLObject *)item size:(CGSize)size manager:(PHCachingImageManager *)manager completion:(void (^)(UIImage *result, NSDictionary *info))callback;
 
 + (CLLocation *)getLocationFromItem:(id)item;
 + (NSDate *)getCreationTimeFromItem:(id)item;
 
++ (PPLObject *)convert:(id)item;
 @end

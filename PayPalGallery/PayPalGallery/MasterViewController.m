@@ -7,23 +7,22 @@
 //
 
 #import "MasterViewController.h"
-#import "PPLPhotoManager.h"
+
 #import "DetailViewController.h"
 #import "AlbumViewController.h"
 
 #import "PPLCollectionViewCell.h"
 
-static CGFloat thumbnailWidth = 100;
-static CGFloat thumbnailHeight = 100;
+static CGFloat const thumbnailWidth = 100.0f;
+static CGFloat const thumbnailHeight = 100.0f;
 
-static NSString* cellReuseIdentifier = @"ppl";
-static NSString* detailSegueIdentifier = @"detail";
-static NSString* albumSegueIdentifier = @"album";
-static NSString* defaultGalleryIdentifier = @"AllPhotos";
+static NSString* const cellReuseIdentifier = @"ppl";
+static NSString* const detailSegueIdentifier = @"detail";
+static NSString* const defaultGalleryIdentifier = @"AllPhotos";
+
 
 @interface MasterViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, strong) PPLPhotoManager *manager;
 @property (nonatomic, strong) NSArray *selectedAssets;
 @property (nonatomic, weak) IBOutlet UICollectionView *gridView;
 
@@ -38,14 +37,6 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-}
-
-- (void)didReceiveMemoryWarning
-{
-}
-
 - (void)loadDataWith:(NSString *)galleryIdentifier
 {
     dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
@@ -53,14 +44,25 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
         if(self.manager == nil) {
             self.manager = [[PPLPhotoManager alloc] init];
         }
-        self.selectedAssets = [self.manager getAssetFromIdentifier:galleryIdentifier];
-        
+        //self.selectedAssets = [self.manager getAssetFromIdentifier:galleryIdentifier];
+        self.selectedAssets = [self.manager getAblumPhotoArrayFromTitle:galleryIdentifier];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.gridView reloadData];
         });
     });
-
 }
+
+- (void)setGalleryIdentifier:(NSString *)galleryIdentifier
+{
+    if(_galleryIdentifier != galleryIdentifier)
+    {
+        _galleryIdentifier = galleryIdentifier;
+        [self loadDataWith:_galleryIdentifier];
+    }
+}
+
+
+#pragma mark - Segue Method
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -68,19 +70,11 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
     {
         DetailViewController *detailViewController = segue.destinationViewController;
         detailViewController.manager = self.manager;
-    }else if([segue.identifier isEqualToString:albumSegueIdentifier]){
-        AlbumViewController *albumViewController = segue.destinationViewController;
-        albumViewController.manager = self.manager;
+        detailViewController.selectedAsset = self.selectedAssets;
+        detailViewController.selectedItem = sender;
     }
 }
 
-- (void)setGalleryIdentifier:(NSString *)galleryIdentifier
-{
-    if(![_galleryIdentifier isEqualToString:galleryIdentifier])
-    {
-        [self loadDataWith:_galleryIdentifier];
-    }
-}
 
 #pragma mark - UICollectionViewDataSource
 
@@ -92,11 +86,10 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PPLCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellReuseIdentifier forIndexPath:indexPath];
-    id item = [self.selectedAssets objectAtIndex:indexPath.item];
+    PPLObject *item = [self.selectedAssets objectAtIndex:indexPath.item];
 
     [self.manager displayPhoto:item size:CGSizeMake(thumbnailWidth, thumbnailHeight) completion:^(UIImage *result, NSDictionary *info) {
         cell.thumbnailImage = result;
-        
     }];
     
     return cell;
@@ -104,8 +97,8 @@ static NSString* defaultGalleryIdentifier = @"AllPhotos";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.manager setCurrentSelectedItem: [self.selectedAssets objectAtIndex:indexPath.item]];
-    [self performSegueWithIdentifier:detailSegueIdentifier sender:nil];
+    PPLObject *cur = [self.selectedAssets objectAtIndex:indexPath.item];
+    [self performSegueWithIdentifier:detailSegueIdentifier sender:cur];
 }
 
 @end

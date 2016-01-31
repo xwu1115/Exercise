@@ -11,6 +11,4 @@
 
 @interface AlbumViewController : UIViewController
 
-@property (nonatomic, strong) PPLPhotoManager *manager;
-
 @end

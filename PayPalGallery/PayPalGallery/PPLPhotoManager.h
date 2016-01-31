@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PPLPhotoCollection.h"
 #import "PPLPhoto.h"
 #import "PPLVideo.h"
 
@@ -22,7 +21,7 @@
 
 
 @interface PPLPhotoManager : NSObject
-@property (nonatomic, strong) NSDictionary *assetCollections;
+
 @property (nonatomic, weak) id<PPLPhotoManagerDelegate>delegate;
 
 /**
@@ -31,33 +30,38 @@
  *  @param size  The size of the photo the user wants to display.
  *  @param callback The funtion user passed into, to manipluate the generated UIImage.
  */
-- (void)displayPhoto:(id)item size:(CGSize)size completion:(void (^)(UIImage *result, NSDictionary *info))callback;
+- (void)displayPhoto:(PPLObject *)item size:(CGSize)size completion:(void (^)(UIImage *result, NSDictionary *info))callback;
+
 
 /**
- *  Display the current selected photo of the manager class.
- *  @param size  The size of the photo the user wants to display.
- *  @param callback The funtion user passed into, to manipluate the generated UIImage.
+ *  Get the location data from the input item.
+ *  @param photo The photo data.
+ *  @param callback The funtion user passed into, to manipluate the generated result.
  */
-- (void)displaySelectedItemWithSize:(CGSize)size completion:(void (^)(UIImage *result, NSDictionary *info))callback;
+- (void)locationNameUpdatedWithPhoto:(PPLObject *)photo completion:(void (^)(NSString*result))callback;
+
 
 /**
- *  Set the current selected photo for the manager class.
- *  @param item  The photo user wants to select, it can be either a local gallery photo or web photo.
+ *  Get the time data from the input item.
+ *  @param photo The photo data.
+ *  @param callback The funtion user passed into, to manipluate the generated result.
  */
-- (void)setCurrentSelectedItem:(id)item;
+- (void)creationTimeFromPhoto:(PPLObject *)photo format:(NSString*)format completion:(void (^)(NSString*result))callback;
 
-- (id)navigateSelectedItemToNext;
+/**
+ *  Return the whole photo collection.
+ *
+ *  @return The array of ablum.
+ */
+- (NSArray *)getAlbumCollection;
 
-- (id)navigateSelectedItemToPrevious;
 
-- (NSArray *)getAssetFromIdentifier:(NSString *)indentifier;
-
-- (CLLocation *)getLocationFromPhoto:(id)photo;
-
-- (void)locationNameUpdatedWithPhoto:(id)photo completion:(void (^)(NSString*result))callback;
-- (void)locationNameUpdatedWithSelectedPhotoAndCompletion:(void (^)(NSString*result))callback;
-
-- (void)creationTimeFromPhoto:(id)photo format:(NSString*)format completion:(void (^)(NSString*result))callback;
-- (void)creationTimeFromSelectedPhotoAndFormat:(NSString*)format completion:(void (^)(NSString*result))callback;
+/**
+ *  Return a specfic photo collection.
+ *  @param title The album title.
+ *
+ *  @return The photo collection of the title.
+ */
+- (NSArray *)getAblumPhotoArrayFromTitle:(NSString *)title;
 
 @end

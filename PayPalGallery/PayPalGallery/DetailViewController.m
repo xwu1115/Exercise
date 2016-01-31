@@ -8,14 +8,15 @@
 
 #import "DetailViewController.h"
 #import "PPLDetailInformationView.h"
+#import "PPLDetailImageView.h"
 
 #import "Masonry.h"
 
-static NSString *timeFormat = @"MMM d yyyy HH:mm";
+static NSString * const timeFormat = @"MMM d yyyy HH:mm";
 
-@interface DetailViewController()<DetailViewDelegate>
+@interface DetailViewController()<DetailViewDelegate, PPLDetailImageViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong)  PPLDetailImageView *imageView;
 @property (nonatomic, strong) PPLDetailInformationView *detailView;
 
 @end
@@ -25,38 +26,41 @@ static NSString *timeFormat = @"MMM d yyyy HH:mm";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setupGestureForImageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
+    self.imageView = [[PPLDetailImageView alloc] initWith:self.selectedAsset photo:self.selectedItem manager:self.manager];
+    self.imageView.delegate = self;
+    [self.view addSubview:self.imageView];
+    
     self.detailView = [[PPLDetailInformationView alloc] init];
     self.detailView.delegate = self;
     self.detailView.alpha = 0;
     [self.view addSubview:self.detailView];
-    [self displayImage];
+    
+    NSInteger currentIndex = [self.selectedAsset indexOfObject:self.selectedItem];
+    [self updateLocationAndTimeLabelsWithIndex:currentIndex];
 }
 
-- (void)displayImage
+- (void)viewDidLayoutSubviews
 {
-    CGFloat height = self.imageView.frame.size.height;
-    CGFloat width = self.imageView.frame.size.width;
-    
-    [self.manager displaySelectedItemWithSize:CGSizeMake(width, height) completion:^(UIImage *result, NSDictionary *info) {
-        self.imageView.image = result;
-    }];
-    
-    [self.manager locationNameUpdatedWithSelectedPhotoAndCompletion:^(NSString *result) {
-        [self.detailView.locationLabel setText:result];
-    }];
-    
-    [self.manager creationTimeFromSelectedPhotoAndFormat:timeFormat completion:^(NSString *result) {
-        [self.detailView.timeLabel setText:result];
-    }];
+    if(self.imageView.scrollView == nil){
+        [self.imageView setup];
+    }
 }
 
 - (void)updateViewConstraints
 {
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.view.mas_width);
+        make.height.equalTo(@(450));
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.centerY.equalTo(self.view.mas_centerY);
+    }];
+
     [self.detailView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
         make.width.equalTo(self.view.mas_width);
@@ -65,34 +69,6 @@ static NSString *timeFormat = @"MMM d yyyy HH:mm";
     }];
  
     [super updateViewConstraints];
-}
-
-- (void)setupGestureForImageView
-{
-    self.imageView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                 action:@selector(handleTap:)];
-    [self.imageView addGestureRecognizer:tapGesture];
-    
-    UISwipeGestureRecognizer *swipeLeftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                              action:@selector(handleSwipe:)];
-    swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.imageView addGestureRecognizer:swipeLeftRecognizer];
-
-    UISwipeGestureRecognizer *swipeRightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                               action:@selector(handleSwipe:)];
-    swipeRightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.imageView addGestureRecognizer:swipeRightRecognizer];
-
-}
-
-- (void)handleTap:(UITapGestureRecognizer *)recognizer
-{
-    if (self.detailView.isInfoHidden == YES) {
-        [self setInformationDetailViewAlpha:1];
-    }else{
-        [self setInformationDetailViewAlpha:0];
-    }
 }
 
 - (void)setInformationDetailViewAlpha:(CGFloat)alpha
@@ -108,20 +84,6 @@ static NSString *timeFormat = @"MMM d yyyy HH:mm";
     }];
 }
 
-- (void)handleSwipe:(UISwipeGestureRecognizer *)recognizer
-{
-    //TODO: use photo gallery way to implment it soon.
-    if(recognizer.direction == UISwipeGestureRecognizerDirectionLeft)
-    {
-        [self.manager navigateSelectedItemToNext];
-    }
-    else
-    {
-        [self.manager navigateSelectedItemToPrevious];
-    }
-    [self displayImage];
-}
-
 #pragma mark PPLDetailInformationViewDelegate Methods
 
 - (void)handleExitButtonPressed
@@ -129,5 +91,31 @@ static NSString *timeFormat = @"MMM d yyyy HH:mm";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark PPLDetailImageViewDelegate Methods
+
+- (void)handleImageViewTapped
+{
+    if (self.detailView.isInfoHidden == YES) {
+        [self setInformationDetailViewAlpha:1];
+    }else{
+        [self setInformationDetailViewAlpha:0];
+    }
+}
+
+- (void)handleImageViewChanged:(NSInteger)index
+{
+    [self updateLocationAndTimeLabelsWithIndex:index];
+}
+
+- (void)updateLocationAndTimeLabelsWithIndex:(NSInteger)index
+{
+    [self.manager locationNameUpdatedWithPhoto:[self.selectedAsset objectAtIndex:index] completion:^(NSString *result) {
+        [self.detailView.locationLabel setText:result];
+    }];
+    
+    [self.manager creationTimeFromPhoto:[self.selectedAsset objectAtIndex:index] format:timeFormat completion:^(NSString *result) {
+        [self.detailView.timeLabel setText:result];
+    }];
+}
 
 @end

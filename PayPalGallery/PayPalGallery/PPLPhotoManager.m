@@ -8,16 +8,21 @@
 
 #import "PPLPhotoManager.h"
 #import "PPLPhotoConverter.h"
+#import "PPLAlbum.h"
 
 #import "PPLInstagPhotoHelper.h"
+#import "PPLFlickerPhotoHelper.h"
 
 @import CoreLocation;
+@import AssetsLibrary;
+
+static NSString * const allPhotosIndentifier = @"AllPhotos";
+static NSString * const instagramIndentifier = @"instagram";
 
 @interface PPLPhotoManager () <PHPhotoLibraryChangeObserver>
 
 @property (nonatomic, strong) PHCachingImageManager *imageManager;
-@property (nonatomic, strong) id selectedItem;
-@property (nonatomic, strong) NSArray *selectedAsset;
+@property (nonatomic, strong) NSDictionary *assetCollections;
 
 @end
 
@@ -28,7 +33,6 @@
     self = [super init];
     if (self) {
         [self setup];
-        //[self fetchInstagramPhoto];
     }
     return self;
 }
@@ -47,23 +51,7 @@
 
 - (NSArray *)getAssetFromIdentifier:(NSString *)indentifier
 {
-    self.selectedAsset = [self.assetCollections objectForKey:indentifier];
-    return self.selectedAsset;
-}
-
-- (void)setSelectedAsset:(NSArray *)selectedAsset
-{
-    if(_selectedAsset != selectedAsset)
-    {
-        _selectedAsset = selectedAsset;
-    }
-}
-
-- (void)setSelectedItem:(id)selectedItem
-{
-    if (selectedItem != _selectedItem) {
-        _selectedItem = selectedItem;
-    }
+    return [self.assetCollections objectForKey:indentifier];
 }
 
 - (NSDictionary *)fetchLocalPhotoGallery
@@ -73,7 +61,7 @@
     PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
     allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
     PHFetchResult *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
-    [dictionary setObject:allPhotos forKey:@"AllPhotos"];
+    [dictionary setObject:allPhotos forKey:allPhotosIndentifier];
     
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
                                                                           subtype:PHAssetCollectionSubtypeAlbumRegular
@@ -86,15 +74,6 @@
     return [NSDictionary dictionaryWithDictionary:dictionary];
 }
 
-- (void)fetchInstagramPhoto
-{
-    if ((BOOL)[[NSUserDefaults standardUserDefaults] boolForKey:@"instagram"] == NO) {
-        [self.delegate handleOauthLogin];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"instagram"];
-    }
-    [PPLInstagPhotoHelper fetchInstagramPhoto];
-}
-
 - (void)saveCollectionResult:(PHFetchResult *)result toDictionary:(NSMutableDictionary *)dictionary
 {
     for (PHCollection *collection in result) {
@@ -104,48 +83,9 @@
     }
 }
 
-- (void)displayPhoto:(id)item size:(CGSize)size completion:(void (^)(UIImage *result, NSDictionary *info))callback
+- (void)displayPhoto:(PPLObject *)item size:(CGSize)size completion:(void (^)(UIImage *result, NSDictionary *info))callback
 {
     [PPLPhotoConverter imageWith:item size:size manager:self.imageManager completion:callback];
-}
-
-- (void)displaySelectedItemWithSize:(CGSize)size completion:(void (^)(UIImage *result, NSDictionary *info))callback
-{
-    if (self.selectedItem == nil) {
-        return;
-    } else {
-        [self displayPhoto:self.selectedItem size:size completion:callback];
-    }
-}
-
-- (void)setCurrentSelectedItem:(id)item
-{
-    self.selectedItem = item;
-}
-
-- (id)navigateSelectedItemToNext
-{
-    int index = (int)[self.selectedAsset indexOfObject:self.selectedItem]+1;
-    if(index > [self.selectedAsset count]) return nil;
-    else {
-        self.selectedItem = [self.selectedAsset objectAtIndex:index];
-        return self.selectedItem;
-    }
-}
-
-- (id)navigateSelectedItemToPrevious
-{
-    int index = (int)[self.selectedAsset indexOfObject:self.selectedItem]-1;
-    if(index < 0) return nil;
-    else {
-        self.selectedItem = [self.selectedAsset objectAtIndex:index];
-        return self.selectedItem;
-    }
-}
-
-- (CLLocation *)getLocationFromPhoto:(id)photo
-{
-    return [PPLPhotoConverter getLocationFromItem:photo];
 }
 
 - (void)locationNameUpdatedWithPhoto:(id)photo completion:(void (^)(NSString*result))callback
@@ -162,12 +102,7 @@
     }];
 }
 
-- (void)locationNameUpdatedWithSelectedPhotoAndCompletion:(void (^)(NSString*result))callback
-{
-    [self locationNameUpdatedWithPhoto:self.selectedItem completion:callback];
-}
-
-- (void)creationTimeFromPhoto:(id)photo format:(NSString*)format completion:(void (^)(NSString*result))callback
+- (void)creationTimeFromPhoto:(PPLObject *)photo format:(NSString*)format completion:(void (^)(NSString*result))callback
 {
     NSDate *date = [PPLPhotoConverter getCreationTimeFromItem:photo];
     
@@ -178,9 +113,40 @@
     callback(stringFromDate);
 }
 
-- (void)creationTimeFromSelectedPhotoAndFormat:(NSString*)format completion:(void (^)(NSString*result))callback
+- (CLLocation *)getLocationFromPhoto:(PPLObject *)photo
 {
-    [self creationTimeFromPhoto:self.selectedItem format:format completion:callback];
+    return [PPLPhotoConverter getLocationFromItem:photo];
+}
+
+- (NSArray *)getAlbumCollection
+{
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSString *key in self.assetCollections){
+        NSArray *collection = [self.assetCollections objectForKey:key];
+        PPLAlbum *curAlbum = [[PPLAlbum alloc] initWithTitle:key count:[collection count]];
+        [result addObject:curAlbum];
+    }
+    return result;
+}
+
+/*Two methods about converting PHAsset to PPLObject, however, ALAssetLibray has been depcrecated in iOS 9.*/
+
+- (NSArray *)getAblumPhotoArrayFromTitle:(NSString *)title
+{
+    NSArray *assetArr = [self getAssetFromIdentifier:title];
+    return [self convertPHAssetCollection:assetArr];
+}
+
+- (NSArray *)convertPHAssetCollection:(NSArray *)collection
+{
+    NSMutableArray *result = [NSMutableArray array];
+    for (PHAsset *item in collection) {
+        PPLObject *obj =  [PPLPhotoConverter convert:item];
+        if (obj != nil) {
+            [result addObject:obj];
+        }
+    }
+    return [NSArray arrayWithArray:result];
 }
 
 #pragma mark PHPhotoLibraryChangeObserver Methods
@@ -188,6 +154,25 @@
 - (void)photoLibraryDidChange:(PHChange *)changeInstance
 {
     [self.delegate handlePhotoChanged];
+}
+
+
+#pragma mark - Web Data Methods
+
+//Instagram recently updated its API endpoints, this method is no longer working.
+
+- (void)fetchFlickerPhoto
+{
+    //TODO: Add method to handle web data.
+}
+
+- (void)fetchInstagramPhoto
+{
+    if ((BOOL)[[NSUserDefaults standardUserDefaults] boolForKey:instagramIndentifier] == NO) {
+        [self.delegate handleOauthLogin];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:instagramIndentifier];
+    }
+    [PPLInstagPhotoHelper fetchInstagramPhoto];
 }
 
 @end

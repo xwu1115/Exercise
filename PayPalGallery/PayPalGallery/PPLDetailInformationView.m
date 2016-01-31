@@ -30,7 +30,7 @@
 {
     self.isInfoHidden = YES;
     self.exitButton = [[UIButton alloc] init];
-    self.exitButton.backgroundColor = [UIColor redColor];
+    //self.exitButton.backgroundColor = [UIColor redColor];
     [self.exitButton setTitle:@"Exit" forState:UIControlStateNormal];
     [self.exitButton addTarget:self action:@selector(handleButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.exitButton];

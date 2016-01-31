@@ -9,13 +9,13 @@
 #import "PPLObject.h"
 
 @implementation PPLObject
-- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height filename:(NSString *)filename date:(NSDate *)creationDate url:(NSString *)url
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height location:(CLLocation *)location date:(NSDate *)creationDate url:(NSString *)url
 {
     self = [super init];
     if (self) {
         _width = width;
         _height = height;
-        _filename = filename;
+        _location = location;
         _creationDate = creationDate;
         _url = url;
     }
