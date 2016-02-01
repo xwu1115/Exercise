@@ -64,4 +64,13 @@
  */
 - (NSArray *)getAblumPhotoArrayFromTitle:(NSString *)title;
 
+
+/**
+ *  Return a photo collection according to the keywords array.
+ *  @param keywords The keywords array users want to search.
+ *
+ *  @return The photo collection contains the keywords.
+ */
+- (NSArray *)searchAlbumPhotosWithkeywords:(NSArray *)keywords;
+
 @end

@@ -9,6 +9,7 @@
 #import "PPLObject.h"
 
 @implementation PPLObject
+
 - (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height location:(CLLocation *)location date:(NSDate *)creationDate url:(NSString *)url
 {
     self = [super init];

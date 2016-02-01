@@ -59,7 +59,7 @@ static NSString * const instagramIndentifier = @"instagram";
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
     PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
-    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
     PHFetchResult *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
     [dictionary setObject:allPhotos forKey:allPhotosIndentifier];
     
@@ -123,10 +123,25 @@ static NSString * const instagramIndentifier = @"instagram";
     NSMutableArray *result = [NSMutableArray array];
     for (NSString *key in self.assetCollections){
         NSArray *collection = [self.assetCollections objectForKey:key];
-        PPLAlbum *curAlbum = [[PPLAlbum alloc] initWithTitle:key count:[collection count]];
+        if([collection count] == 0)continue;
+        
+        PHAsset *set = [collection firstObject];
+        PPLObject *albumPhoto = [PPLPhotoConverter convert:set];
+        PPLAlbum *curAlbum = [[PPLAlbum alloc] initWithTitle:key count:[collection count] photo:albumPhoto];
+        curAlbum.lastTimeUpdated = albumPhoto.creationDate;
         [result addObject:curAlbum];
     }
-    return result;
+    return [self sortByDate:result];
+}
+
+- (NSArray *)sortByDate:(NSMutableArray *)arr
+{
+    NSArray *sortedArr = [arr sortedArrayUsingComparator:^NSComparisonResult(PPLAlbum *obj1, PPLAlbum *obj2) {
+        NSDate *d1 = obj1.lastTimeUpdated;
+        NSDate *d2 = obj2.lastTimeUpdated;
+        return [d2 compare: d1];
+    }];
+    return sortedArr;
 }
 
 /*Two methods about converting PHAsset to PPLObject, however, ALAssetLibray has been depcrecated in iOS 9.*/
@@ -148,6 +163,14 @@ static NSString * const instagramIndentifier = @"instagram";
     }
     return [NSArray arrayWithArray:result];
 }
+
+- (NSArray *)searchAlbumPhotosWithkeywords:(NSArray *)keywords
+{
+    NSArray *array = [NSArray array];
+    //TODO: Add the search main methods here.
+    return  array;
+}
+
 
 #pragma mark PHPhotoLibraryChangeObserver Methods
 

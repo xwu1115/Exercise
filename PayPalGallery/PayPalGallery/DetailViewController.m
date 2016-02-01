@@ -56,7 +56,7 @@ static NSString * const timeFormat = @"MMM d yyyy HH:mm";
 {
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
-        make.height.equalTo(@(450));
+        make.height.equalTo(self.view.mas_height);
         make.centerX.equalTo(self.view.mas_centerX);
         make.centerY.equalTo(self.view.mas_centerY);
     }];

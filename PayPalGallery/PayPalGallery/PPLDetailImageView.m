@@ -8,6 +8,7 @@
 
 #import "PPLDetailImageView.h"
 #import "Masonry.h"
+#import "math.h"
 
 const int NUMBER_OF_IMAGE = 10;
 
@@ -44,14 +45,15 @@ const int NUMBER_OF_IMAGE = 10;
     
     self.scrollView = [[UIScrollView alloc] init];
     //self.scrollView.backgroundColor = [UIColor greenColor];
-    self.scrollView.contentSize = CGSizeMake(width * NUMBER_OF_IMAGE, height);
+    self.currentItemIndex = [self.selectedAssets indexOfObject:self.selectedPhoto];
+    self.scrollView.contentSize = CGSizeMake(width * fminl(NUMBER_OF_IMAGE, [self.selectedAssets count] - self.currentItemIndex), height);
     [self addSubview:self.scrollView];
     
     self.scrollView.pagingEnabled = YES;
     [self updateConstraints];
     
-    self.imageViewArray = [NSMutableArray arrayWithCapacity:3];
-    for (int i = 0; i < NUMBER_OF_IMAGE; i++) {
+    self.imageViewArray = [NSMutableArray arrayWithCapacity: fminl(NUMBER_OF_IMAGE, [self.selectedAssets count])];
+    for (int i = 0; i < fminl(NUMBER_OF_IMAGE, [self.selectedAssets count] - self.currentItemIndex); i++) {
         UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(i*width, 0, width, height)];
         view.contentMode = UIViewContentModeScaleAspectFit;
         view.clipsToBounds = YES;
@@ -81,7 +83,6 @@ const int NUMBER_OF_IMAGE = 10;
 - (void)loadVisibleImages
 {
     CGSize size = CGSizeMake(self.frame.size.width, self.frame.size.height);
-    self.currentItemIndex = [self.selectedAssets indexOfObject:self.selectedPhoto];
     NSUInteger index = self.currentItemIndex;
     if(index == -1) return;
     
@@ -158,7 +159,8 @@ const int NUMBER_OF_IMAGE = 10;
     int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     if(self.previousPage == page) return;
     
-    [self.delegate handleImageViewChanged:self.currentItemIndex++];
+    page > self.previousPage ? self.currentItemIndex++ : self.currentItemIndex--;
+    [self.delegate handleImageViewChanged:self.currentItemIndex];
     self.previousPage = page;
 }
 

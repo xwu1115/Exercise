@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PPLObject.h"
 
 @interface PPLAlbum : NSObject
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic) NSInteger count;
+@property (nonatomic) NSDate *lastTimeUpdated;
+@property (nonatomic, strong) PPLObject *albumPhoto;
 
-- (instancetype)initWithTitle:(NSString *)title count:(NSInteger)count;
+- (instancetype)initWithTitle:(NSString *)title count:(NSInteger)count photo:(PPLObject *)photo;
 
 @end

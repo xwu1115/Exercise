@@ -10,8 +10,8 @@
 
 @interface PPLAlbumTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *count;
-@property (weak, nonatomic) IBOutlet UIView *icon;
+@property (nonatomic, weak) IBOutlet UILabel *title;
+@property (nonatomic, weak) IBOutlet UILabel *count;
+@property (nonatomic, weak) IBOutlet UIImageView *icon;
 
 @end

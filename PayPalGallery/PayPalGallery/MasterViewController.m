@@ -13,19 +13,15 @@
 
 #import "PPLCollectionViewCell.h"
 
-static CGFloat const thumbnailWidth = 100.0f;
-static CGFloat const thumbnailHeight = 100.0f;
-
 static NSString* const cellReuseIdentifier = @"ppl";
 static NSString* const detailSegueIdentifier = @"detail";
 static NSString* const defaultGalleryIdentifier = @"AllPhotos";
 
 
-@interface MasterViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface MasterViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSArray *selectedAssets;
 @property (nonatomic, weak) IBOutlet UICollectionView *gridView;
-
 @end
 
 @implementation MasterViewController
@@ -37,6 +33,17 @@ static NSString* const defaultGalleryIdentifier = @"AllPhotos";
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationItem setTitle:self.galleryIdentifier];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    [self.gridView.collectionViewLayout invalidateLayout];
+}
+
 - (void)loadDataWith:(NSString *)galleryIdentifier
 {
     dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
@@ -44,7 +51,6 @@ static NSString* const defaultGalleryIdentifier = @"AllPhotos";
         if(self.manager == nil) {
             self.manager = [[PPLPhotoManager alloc] init];
         }
-        //self.selectedAssets = [self.manager getAssetFromIdentifier:galleryIdentifier];
         self.selectedAssets = [self.manager getAblumPhotoArrayFromTitle:galleryIdentifier];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.gridView reloadData];
@@ -88,7 +94,7 @@ static NSString* const defaultGalleryIdentifier = @"AllPhotos";
     PPLCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellReuseIdentifier forIndexPath:indexPath];
     PPLObject *item = [self.selectedAssets objectAtIndex:indexPath.item];
 
-    [self.manager displayPhoto:item size:CGSizeMake(thumbnailWidth, thumbnailHeight) completion:^(UIImage *result, NSDictionary *info) {
+    [self.manager displayPhoto:item size:[self calculateSize] completion:^(UIImage *result, NSDictionary *info) {
         cell.thumbnailImage = result;
     }];
     
@@ -99,6 +105,17 @@ static NSString* const defaultGalleryIdentifier = @"AllPhotos";
 {
     PPLObject *cur = [self.selectedAssets objectAtIndex:indexPath.item];
     [self performSegueWithIdentifier:detailSegueIdentifier sender:cur];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self calculateSize];
+}
+
+- (CGSize)calculateSize
+{
+    CGFloat width = self.view.frame.size.width;
+    return CGSizeMake(width/4.0-1.5, width/4.0-1.5);
 }
 
 @end

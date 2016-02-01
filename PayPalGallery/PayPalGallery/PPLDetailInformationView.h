@@ -22,4 +22,7 @@
 @property (nonatomic, strong) UILabel *locationLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 
+@property (nonatomic, strong) UIImageView *timeIcon;
+@property (nonatomic, strong) UIImageView *locationIcon;
+
 @end

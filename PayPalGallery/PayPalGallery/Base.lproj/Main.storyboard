@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--PayPal Photo Gallery-->
+        <!--PayPal Gallery-->
         <scene sceneID="gIK-y3-9FB">
             <objects>
                 <viewController id="38U-88-8tB" customClass="AlbumViewController" sceneMemberID="viewController">
@@ -37,40 +37,45 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0cL-Cl-qnH" id="UUl-7P-2n2">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMp-RD-iY4">
-                                                    <rect key="frame" x="520" y="20" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMp-RD-iY4">
+                                                    <rect key="frame" x="522.5" y="21" width="39.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNM-qI-aGV">
-                                                    <rect key="frame" x="38" y="20" width="120" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNM-qI-aGV">
+                                                    <rect key="frame" x="88" y="19" width="250" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="Zei-6p-Gaq"/>
+                                                        <constraint firstAttribute="width" constant="250" id="Zei-6p-Gaq"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UNr-uC-RdX">
+                                                    <rect key="frame" x="21" y="5" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="QxY-4i-iSO"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="SMp-RD-iY4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vNM-qI-aGV" secondAttribute="trailing" priority="750" constant="150" id="3Sx-8e-mRJ"/>
+                                                <constraint firstItem="vNM-qI-aGV" firstAttribute="leading" secondItem="UNr-uC-RdX" secondAttribute="trailing" constant="17" id="2f0-bg-C8W"/>
+                                                <constraint firstItem="UNr-uC-RdX" firstAttribute="leading" secondItem="UUl-7P-2n2" secondAttribute="leadingMargin" constant="13" id="4Rq-QI-WAG"/>
                                                 <constraint firstItem="vNM-qI-aGV" firstAttribute="centerY" secondItem="UUl-7P-2n2" secondAttribute="centerY" id="Dgv-w1-5dA"/>
-                                                <constraint firstItem="vNM-qI-aGV" firstAttribute="leading" secondItem="UUl-7P-2n2" secondAttribute="leadingMargin" constant="30" id="EMD-5P-lhf"/>
+                                                <constraint firstItem="vNM-qI-aGV" firstAttribute="top" secondItem="UUl-7P-2n2" secondAttribute="topMargin" constant="11" id="FGA-5L-JPW"/>
+                                                <constraint firstItem="UNr-uC-RdX" firstAttribute="centerY" secondItem="UUl-7P-2n2" secondAttribute="centerY" id="GDc-8W-7mP"/>
                                                 <constraint firstItem="SMp-RD-iY4" firstAttribute="centerY" secondItem="UUl-7P-2n2" secondAttribute="centerY" id="UyT-iL-UsT"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="SMp-RD-iY4" secondAttribute="trailing" constant="30" id="vcI-Ho-H7J"/>
+                                                <constraint firstItem="UNr-uC-RdX" firstAttribute="top" secondItem="UUl-7P-2n2" secondAttribute="topMargin" constant="-3" id="xIh-R3-4Ws"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="3Sx-8e-mRJ"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="count" destination="SMp-RD-iY4" id="L1A-u2-Bpm"/>
+                                            <outlet property="icon" destination="UNr-uC-RdX" id="wvr-O7-bOf"/>
                                             <outlet property="title" destination="vNM-qI-aGV" id="vNe-cI-4FO"/>
                                         </connections>
                                     </tableViewCell>
@@ -94,8 +99,15 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="PayPal Photo Gallery" id="1Md-EP-aYb"/>
+                    <navigationItem key="navigationItem" title="PayPal Gallery" id="1Md-EP-aYb">
+                        <barButtonItem key="rightBarButtonItem" image="addNew" id="U5g-Mz-rKM">
+                            <connections>
+                                <action selector="handleAddAlbumButtonPressed:" destination="38U-88-8tB" id="99L-MJ-HiM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="vpo-pV-lh8" id="JGw-mv-AQb"/>
                         <outlet property="tableView" destination="flb-kX-m8E" id="qab-Fz-YJI"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="master" id="6Tk-LS-LSR"/>
                     </connections>
@@ -119,33 +131,32 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jcy-6a-9SC">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="UPi-XE-CNt">
-                                    <size key="itemSize" width="120" height="120"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="UPi-XE-CNt">
+                                    <size key="itemSize" width="80" height="80"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ppl" id="HCS-1r-7j2" customClass="PPLCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="64" width="100" height="100"/>
+                                        <rect key="frame" x="0.0" y="64" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QSa-uO-h7H">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="QSa-uO-h7H" firstAttribute="centerX" secondItem="HCS-1r-7j2" secondAttribute="centerX" id="1Sy-jO-DHi"/>
-                                            <constraint firstItem="QSa-uO-h7H" firstAttribute="centerY" secondItem="HCS-1r-7j2" secondAttribute="centerY" id="K8g-Ko-lxf"/>
-                                            <constraint firstItem="QSa-uO-h7H" firstAttribute="height" secondItem="HCS-1r-7j2" secondAttribute="height" id="TI2-5c-MOr"/>
-                                            <constraint firstItem="QSa-uO-h7H" firstAttribute="width" secondItem="HCS-1r-7j2" secondAttribute="width" id="tpL-cy-CkJ"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="QSa-uO-h7H" secondAttribute="trailing" constant="-8" id="3xd-Og-3fO"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="QSa-uO-h7H" secondAttribute="bottom" constant="-8" id="LFu-ou-SaT"/>
+                                            <constraint firstItem="QSa-uO-h7H" firstAttribute="leading" secondItem="HCS-1r-7j2" secondAttribute="leadingMargin" constant="-8" id="aN3-r0-kYl"/>
+                                            <constraint firstItem="QSa-uO-h7H" firstAttribute="top" secondItem="HCS-1r-7j2" secondAttribute="topMargin" constant="-8" id="hPZ-Pz-LTE"/>
                                         </constraints>
-                                        <size key="customSize" width="100" height="100"/>
                                         <connections>
                                             <outlet property="imageView" destination="QSa-uO-h7H" id="Wnf-ma-8MD"/>
                                         </connections>
@@ -157,7 +168,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jcy-6a-9SC" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="2IO-bG-30j"/>
                             <constraint firstItem="jcy-6a-9SC" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="8Ty-1H-0FZ"/>
@@ -212,4 +223,7 @@
             <point key="canvasLocation" x="361" y="275"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="addNew" width="17" height="17"/>
+    </resources>
 </document>

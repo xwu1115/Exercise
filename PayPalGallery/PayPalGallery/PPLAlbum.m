@@ -10,12 +10,13 @@
 
 @implementation PPLAlbum
 
-- (instancetype)initWithTitle:(NSString *)title count:(NSInteger)count
+- (instancetype)initWithTitle:(NSString *)title count:(NSInteger)count photo:(PPLObject *)photo
 {
     self = [super init];
     if (self) {
         _title = title;
         _count = count;
+        _albumPhoto = photo;
     }
     return self;
 }

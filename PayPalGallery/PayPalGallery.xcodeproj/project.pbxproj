@@ -34,6 +34,11 @@
 		00E1F3611C5DFAE3006E5629 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00E1F3601C5DFAE3006E5629 /* UIKit.framework */; };
 		00E1F3641C5E7576006E5629 /* PPLAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3631C5E7576006E5629 /* PPLAlbumTableViewCell.m */; };
 		00E1F3671C5E776E006E5629 /* PPLAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3661C5E776E006E5629 /* PPLAlbum.m */; };
+		00E1F3711C5ED20A006E5629 /* VisbyCF-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00E1F3701C5ECE4A006E5629 /* VisbyCF-Light.otf */; };
+		00E1F3731C5ED23E006E5629 /* VisbyCF-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00E1F3721C5ED23E006E5629 /* VisbyCF-Medium.otf */; };
+		00E1F3751C5ED248006E5629 /* VisbyCF-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 00E1F3741C5ED248006E5629 /* VisbyCF-Bold.otf */; };
+		00E1F3791C5ED57C006E5629 /* PPLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3781C5ED57C006E5629 /* PPLHelper.m */; };
+		00E1F3821C5EF4E9006E5629 /* PPLIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E1F3811C5EF4E9006E5629 /* PPLIndicatorView.m */; };
 		997188550498B2438978CAE9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0765F78603F60BC094EAB1EA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +109,13 @@
 		00E1F3631C5E7576006E5629 /* PPLAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLAlbumTableViewCell.m; sourceTree = "<group>"; };
 		00E1F3651C5E776E006E5629 /* PPLAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLAlbum.h; sourceTree = "<group>"; };
 		00E1F3661C5E776E006E5629 /* PPLAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLAlbum.m; sourceTree = "<group>"; };
+		00E1F3701C5ECE4A006E5629 /* VisbyCF-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VisbyCF-Light.otf"; sourceTree = "<group>"; };
+		00E1F3721C5ED23E006E5629 /* VisbyCF-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VisbyCF-Medium.otf"; sourceTree = "<group>"; };
+		00E1F3741C5ED248006E5629 /* VisbyCF-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VisbyCF-Bold.otf"; sourceTree = "<group>"; };
+		00E1F3771C5ED57C006E5629 /* PPLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLHelper.h; sourceTree = "<group>"; };
+		00E1F3781C5ED57C006E5629 /* PPLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLHelper.m; sourceTree = "<group>"; };
+		00E1F3801C5EF4E9006E5629 /* PPLIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLIndicatorView.h; sourceTree = "<group>"; };
+		00E1F3811C5EF4E9006E5629 /* PPLIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLIndicatorView.m; sourceTree = "<group>"; };
 		0765F78603F60BC094EAB1EA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C874A4FBA520ED5ADBF6AAEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DC42E95339BA514BFF154689 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,13 +179,11 @@
 			children = (
 				0004712F1C56A46B00A1A41D /* AppDelegate.h */,
 				000471301C56A46B00A1A41D /* AppDelegate.m */,
-				00E1F3531C5CA0D8006E5629 /* AlbumViewController.h */,
-				00E1F3541C5CA0D8006E5629 /* AlbumViewController.m */,
-				000471321C56A46B00A1A41D /* MasterViewController.h */,
-				000471331C56A46B00A1A41D /* MasterViewController.m */,
-				00BD2E571C5898F800044E3A /* DetailViewController.h */,
-				00BD2E581C5898F800044E3A /* DetailViewController.m */,
-				00E1F34A1C5C761D006E5629 /* Views */,
+				00E1F3771C5ED57C006E5629 /* PPLHelper.h */,
+				00E1F3781C5ED57C006E5629 /* PPLHelper.m */,
+				00E1F3691C5EC746006E5629 /* Album */,
+				00E1F3681C5EC73C006E5629 /* Master */,
+				00E1F36A1C5EC74E006E5629 /* Detail */,
 				000471721C56B3E100A1A41D /* SDK */,
 				000471351C56A46B00A1A41D /* Main.storyboard */,
 				000471381C56A46B00A1A41D /* Assets.xcassets */,
@@ -189,6 +199,7 @@
 		0004712C1C56A46B00A1A41D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00E1F3761C5ED24E006E5629 /* Fonts */,
 				0004712D1C56A46B00A1A41D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -226,14 +237,10 @@
 		00E1F34A1C5C761D006E5629 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				00E1F3471C5C75BF006E5629 /* PPLCollectionViewCell.h */,
-				00E1F3481C5C75BF006E5629 /* PPLCollectionViewCell.m */,
 				00E1F34D1C5C8D60006E5629 /* PPLDetailInformationView.h */,
 				00E1F34E1C5C8D60006E5629 /* PPLDetailInformationView.m */,
 				00E1F3581C5D7449006E5629 /* PPLDetailImageView.h */,
 				00E1F3591C5D7449006E5629 /* PPLDetailImageView.m */,
-				00E1F3621C5E7576006E5629 /* PPLAlbumTableViewCell.h */,
-				00E1F3631C5E7576006E5629 /* PPLAlbumTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -264,6 +271,90 @@
 				00E1F35E1C5DF475006E5629 /* PPLFlickerPhotoHelper.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		00E1F3681C5EC73C006E5629 /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				00E1F36D1C5EC77C006E5629 /* Views */,
+				00E1F36E1C5EC785006E5629 /* Controllers */,
+			);
+			name = Master;
+			sourceTree = "<group>";
+		};
+		00E1F3691C5EC746006E5629 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				00E1F36B1C5EC75C006E5629 /* Views */,
+				00E1F36C1C5EC76E006E5629 /* Controllers */,
+			);
+			name = Album;
+			sourceTree = "<group>";
+		};
+		00E1F36A1C5EC74E006E5629 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				00E1F34A1C5C761D006E5629 /* Views */,
+				00E1F36F1C5EC795006E5629 /* Controllers */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		00E1F36B1C5EC75C006E5629 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00E1F3621C5E7576006E5629 /* PPLAlbumTableViewCell.h */,
+				00E1F3631C5E7576006E5629 /* PPLAlbumTableViewCell.m */,
+				00E1F3801C5EF4E9006E5629 /* PPLIndicatorView.h */,
+				00E1F3811C5EF4E9006E5629 /* PPLIndicatorView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		00E1F36C1C5EC76E006E5629 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				00E1F3531C5CA0D8006E5629 /* AlbumViewController.h */,
+				00E1F3541C5CA0D8006E5629 /* AlbumViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		00E1F36D1C5EC77C006E5629 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00E1F3471C5C75BF006E5629 /* PPLCollectionViewCell.h */,
+				00E1F3481C5C75BF006E5629 /* PPLCollectionViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		00E1F36E1C5EC785006E5629 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				000471321C56A46B00A1A41D /* MasterViewController.h */,
+				000471331C56A46B00A1A41D /* MasterViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		00E1F36F1C5EC795006E5629 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				00BD2E571C5898F800044E3A /* DetailViewController.h */,
+				00BD2E581C5898F800044E3A /* DetailViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		00E1F3761C5ED24E006E5629 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				00E1F3741C5ED248006E5629 /* VisbyCF-Bold.otf */,
+				00E1F3721C5ED23E006E5629 /* VisbyCF-Medium.otf */,
+				00E1F3701C5ECE4A006E5629 /* VisbyCF-Light.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		8C47DDAE106DB3262BBA677D /* Frameworks */ = {
@@ -394,8 +485,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0004713C1C56A46B00A1A41D /* LaunchScreen.storyboard in Resources */,
+				00E1F3731C5ED23E006E5629 /* VisbyCF-Medium.otf in Resources */,
 				000471391C56A46B00A1A41D /* Assets.xcassets in Resources */,
+				00E1F3751C5ED248006E5629 /* VisbyCF-Bold.otf in Resources */,
 				000471371C56A46B00A1A41D /* Main.storyboard in Resources */,
+				00E1F3711C5ED20A006E5629 /* VisbyCF-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +562,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00E1F3791C5ED57C006E5629 /* PPLHelper.m in Sources */,
+				00E1F3821C5EF4E9006E5629 /* PPLIndicatorView.m in Sources */,
 				0004716E1C56AA0800A1A41D /* PPLVideo.m in Sources */,
 				00E1F3671C5E776E006E5629 /* PPLAlbum.m in Sources */,
 				000471341C56A46B00A1A41D /* MasterViewController.m in Sources */,

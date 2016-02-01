@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PPLHelper.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor whiteColor],
+                                                           NSForegroundColorAttributeName,
+                                                           [PPLHelper pplMediumFontWithSize:20.0f], NSFontAttributeName,nil]];
+    [[UINavigationBar appearance] setBarTintColor:[PPLHelper backgroundColor]];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                          [PPLHelper pplLightFontWithSize:14.0f],NSFontAttributeName,
+                                                          nil] forState:UIControlStateNormal];
+    
     return YES;
 }
 
