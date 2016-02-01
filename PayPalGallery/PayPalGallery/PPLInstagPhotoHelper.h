@@ -10,6 +10,6 @@
 
 @interface PPLInstagPhotoHelper : NSObject
 
-+ (void)fetchInstagramPhoto;
++ (void)fetchInstagramPhotoWithCompletion:(void (^)(NSArray*result))callback;
 
 @end

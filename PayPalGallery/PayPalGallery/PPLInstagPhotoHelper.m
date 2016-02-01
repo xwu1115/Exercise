@@ -11,13 +11,13 @@
 
 @implementation PPLInstagPhotoHelper
 
-+ (void)fetchInstagramPhoto
++ (void)fetchInstagramPhotoWithCompletion:(void (^)(NSArray*result))callback
 {
     InstagramEngine *engine = [InstagramEngine sharedEngine];
     [engine getPopularMediaWithSuccess:^(NSArray<InstagramMedia *> * _Nonnull media, InstagramPaginationInfo * _Nonnull paginationInfo) {
-        
+        callback(media);
     } failure:^(NSError * _Nonnull error, NSInteger serverStatusCode) {
-        
+        NSLog(@"error: %@", error);
     }];
 }
 

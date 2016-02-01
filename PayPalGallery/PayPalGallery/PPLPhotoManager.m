@@ -183,7 +183,6 @@ static NSString * const instagramIndentifier = @"instagram";
 #pragma mark - Web Data Methods
 
 
-
 - (void)fetchFlickerPhotoWithCompletion:(void (^)(NSArray *data))callback
 {
     //TODO: Add method to handle web data.
@@ -196,7 +195,7 @@ static NSString * const instagramIndentifier = @"instagram";
         [self.delegate handleOauthLogin];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:instagramIndentifier];
     }
-    [PPLInstagPhotoHelper fetchInstagramPhoto];
+    [PPLInstagPhotoHelper fetchInstagramPhotoWithCompletion:callback];
 }
 
 @end

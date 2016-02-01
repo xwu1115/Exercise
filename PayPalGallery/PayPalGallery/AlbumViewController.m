@@ -152,17 +152,42 @@ static NSString * const segueIdentifier = @"master";
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Instagram"
                                                           style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                                                              [self.manager fetchInstagramPhotoWithCompletion:nil];
+                                                              [self fetchInstagram];
                                                           }];
     UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Flicker"
                                                            style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                [self.manager fetchFlickerPhotoWithCompletion:nil];
                                                            }];
     
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+                                                               [alert dismissViewControllerAnimated:YES completion:nil];
+                                                           }];
+
+    
     [alert addAction:firstAction];
     [alert addAction:secondAction];
+    [alert addAction:cancelAction];
     
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)fetchInstagram
+{
+    [self.manager fetchInstagramPhotoWithCompletion:^(NSArray *result) {
+        if (result == nil) {
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Instagram Error"
+                                                                           message:@"Unable to fetch from Instagram"
+                                                                    preferredStyle:UIAlertControllerStyleActionSheet];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                  style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+                                                                      [alert dismissViewControllerAnimated:YES completion:nil];
+                                                                  }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }];
 }
 
 #pragma mark - PPLPhoto Manager Delegate Methods
