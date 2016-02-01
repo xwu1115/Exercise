@@ -64,8 +64,14 @@ static NSString * const segueIdentifier = @"master";
 
 - (void)fetchAlbum
 {
-    self.indicator = [[PPLIndicatorView alloc] init];
-    [self.view addSubview: self.indicator];
+    if(self.indicator == nil){
+        self.indicator = [[PPLIndicatorView alloc] init];
+        [self.view addSubview: self.indicator];
+    }else{
+        self.indicator.alpha = 1;
+    }
+    
+    [self.indicator start];
     
     dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
     dispatch_async(myQueue, ^{
@@ -74,9 +80,12 @@ static NSString * const segueIdentifier = @"master";
             self.manager.delegate = self;
         }
         
+        [self.manager loadData];
+        
         self.albumTitleArray = [self.manager getAlbumCollection];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
+            
             [self.indicator stop];
         });
     });
@@ -138,7 +147,22 @@ static NSString * const segueIdentifier = @"master";
 
 - (IBAction) handleAddAlbumButtonPressed:(id)sender
 {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add New Gallery"
+                                                                   message:@""
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Instagram"
+                                                          style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                                                              [self.manager fetchInstagramPhotoWithCompletion:nil];
+                                                          }];
+    UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Flicker"
+                                                           style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                                                               [self.manager fetchFlickerPhotoWithCompletion:nil];
+                                                           }];
     
+    [alert addAction:firstAction];
+    [alert addAction:secondAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - PPLPhoto Manager Delegate Methods

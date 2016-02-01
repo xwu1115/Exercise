@@ -179,8 +179,7 @@
 			children = (
 				0004712F1C56A46B00A1A41D /* AppDelegate.h */,
 				000471301C56A46B00A1A41D /* AppDelegate.m */,
-				00E1F3771C5ED57C006E5629 /* PPLHelper.h */,
-				00E1F3781C5ED57C006E5629 /* PPLHelper.m */,
+				00E1F3831C5F1A39006E5629 /* Helpers */,
 				00E1F3691C5EC746006E5629 /* Album */,
 				00E1F3681C5EC73C006E5629 /* Master */,
 				00E1F36A1C5EC74E006E5629 /* Detail */,
@@ -355,6 +354,15 @@
 				00E1F3701C5ECE4A006E5629 /* VisbyCF-Light.otf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		00E1F3831C5F1A39006E5629 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				00E1F3771C5ED57C006E5629 /* PPLHelper.h */,
+				00E1F3781C5ED57C006E5629 /* PPLHelper.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		8C47DDAE106DB3262BBA677D /* Frameworks */ = {

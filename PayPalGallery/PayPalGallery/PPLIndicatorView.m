@@ -29,9 +29,13 @@
         self.indicator = [[UIActivityIndicatorView alloc]init];
         [self.indicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
         [self addSubview:self.indicator];
-        [self.indicator startAnimating];
     }
     return self;
+}
+
+- (void)start
+{
+    [self.indicator startAnimating];
 }
 
 - (void)stop

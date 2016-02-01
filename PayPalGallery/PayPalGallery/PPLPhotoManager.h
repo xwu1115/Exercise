@@ -25,6 +25,12 @@
 @property (nonatomic, weak) id<PPLPhotoManagerDelegate>delegate;
 
 /**
+ *  Load the local gallery. This is the inital step for PPL photo manager.
+ */
+- (void)loadData;
+
+
+/**
  *  Display a photo.
  *  @param item  The photo user wants to display, it can be either a local gallery photo or web photo.
  *  @param size  The size of the photo the user wants to display.
@@ -72,5 +78,19 @@
  *  @return The photo collection contains the keywords.
  */
 - (NSArray *)searchAlbumPhotosWithkeywords:(NSArray *)keywords;
+
+
+/**
+ *  Ask the manager to fetch photos from Flicker.
+ *  @param callback The funtion user passed into, to manipluate the generated result.
+ */
+- (void)fetchFlickerPhotoWithCompletion:(void (^)(NSArray*result))callback;
+
+
+/**
+ *  Ask the manager to fetch photos from Instagram.
+ *  @param callback The funtion user passed into, to manipluate the generated result.
+ */
+- (void)fetchInstagramPhotoWithCompletion:(void (^)(NSArray*result))callback;
 
 @end

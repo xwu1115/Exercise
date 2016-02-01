@@ -11,5 +11,5 @@
 @interface PPLIndicatorView : UIView
 
 - (void)stop;
-
+- (void)start;
 @end

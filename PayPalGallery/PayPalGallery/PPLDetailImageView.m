@@ -10,8 +10,6 @@
 #import "Masonry.h"
 #import "math.h"
 
-const int NUMBER_OF_IMAGE = 10;
-
 @interface PPLDetailImageView()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *imageViewArray;
@@ -44,8 +42,10 @@ const int NUMBER_OF_IMAGE = 10;
     CGFloat height = self.frame.size.height;
     
     self.scrollView = [[UIScrollView alloc] init];
-    //self.scrollView.backgroundColor = [UIColor greenColor];
+
     self.currentItemIndex = [self.selectedAssets indexOfObject:self.selectedPhoto];
+    self.previousPage = self.currentItemIndex;
+    
     self.scrollView.contentSize = CGSizeMake(width * [self.selectedAssets count], height);
     [self addSubview:self.scrollView];
     
@@ -87,7 +87,9 @@ const int NUMBER_OF_IMAGE = 10;
     [super updateConstraints];
 }
 
-/* add another series of functions to deal with large amount of images case*/
+
+#pragma mark Reuse Previous Imageview Methods
+
 - (void)loadCurrentPage
 {
     [self loadPage:self.currentItemIndex];
@@ -115,12 +117,10 @@ const int NUMBER_OF_IMAGE = 10;
 }
 
 - (void)purgePage:(NSInteger)page {
-    if (page < 0 || page >= self.selectedAssets.count) {
-        // If it's outside the range of what you have to display, then do nothing
+    if (page < 0 || page >= self.imageViewArray.count) {
         return;
     }
     
-    // Remove a page from the scroll view and reset the container array
     UIView *pageView = [self.imageViewArray objectAtIndex:page];
     if ((NSNull*)pageView != [NSNull null])
     {
@@ -131,7 +131,7 @@ const int NUMBER_OF_IMAGE = 10;
 
 - (void)loadPage:(NSInteger)page
 {
-    if (page < 0 || page >= [self.selectedAssets count]) {
+    if (page < 0 || page >= [self.imageViewArray count]) {
         return;
     }
     
@@ -168,6 +168,7 @@ const int NUMBER_OF_IMAGE = 10;
     if(self.previousPage == page) return;
     
     page > self.previousPage ? self.currentItemIndex++ : self.currentItemIndex--;
+    
     [self.delegate handleImageViewChanged:self.currentItemIndex];
     self.previousPage = page;
 }

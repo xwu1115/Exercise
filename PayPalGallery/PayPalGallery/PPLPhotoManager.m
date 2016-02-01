@@ -32,7 +32,8 @@ static NSString * const instagramIndentifier = @"instagram";
 {
     self = [super init];
     if (self) {
-        [self setup];
+        self.imageManager = [[PHCachingImageManager alloc] init];
+        [self loadData];
     }
     return self;
 }
@@ -42,9 +43,8 @@ static NSString * const instagramIndentifier = @"instagram";
     [[PHPhotoLibrary sharedPhotoLibrary] unregisterChangeObserver:self];
 }
 
-- (void)setup
+- (void)loadData
 {
-    self.imageManager = [[PHCachingImageManager alloc] init];
     self.assetCollections = [self fetchLocalPhotoGallery];
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
 }
@@ -182,15 +182,16 @@ static NSString * const instagramIndentifier = @"instagram";
 
 #pragma mark - Web Data Methods
 
-//Instagram recently updated its API endpoints, this method is no longer working.
 
-- (void)fetchFlickerPhoto
+
+- (void)fetchFlickerPhotoWithCompletion:(void (^)(NSArray *data))callback
 {
     //TODO: Add method to handle web data.
 }
 
-- (void)fetchInstagramPhoto
-{
+- (void)fetchInstagramPhotoWithCompletion:(void (^)(NSArray *result))callback;{
+    //Instagram recently updated its API endpoints, this method is no longer working.
+    
     if ((BOOL)[[NSUserDefaults standardUserDefaults] boolForKey:instagramIndentifier] == NO) {
         [self.delegate handleOauthLogin];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:instagramIndentifier];
