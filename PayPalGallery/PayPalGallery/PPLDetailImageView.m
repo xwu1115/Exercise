@@ -46,22 +46,18 @@ const int NUMBER_OF_IMAGE = 10;
     self.scrollView = [[UIScrollView alloc] init];
     //self.scrollView.backgroundColor = [UIColor greenColor];
     self.currentItemIndex = [self.selectedAssets indexOfObject:self.selectedPhoto];
-    self.scrollView.contentSize = CGSizeMake(width * fminl(NUMBER_OF_IMAGE, [self.selectedAssets count] - self.currentItemIndex), height);
+    self.scrollView.contentSize = CGSizeMake(width * [self.selectedAssets count], height);
     [self addSubview:self.scrollView];
     
     self.scrollView.pagingEnabled = YES;
     [self updateConstraints];
     
-    self.imageViewArray = [NSMutableArray arrayWithCapacity: fminl(NUMBER_OF_IMAGE, [self.selectedAssets count])];
-    for (int i = 0; i < fminl(NUMBER_OF_IMAGE, [self.selectedAssets count] - self.currentItemIndex); i++) {
-        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(i*width, 0, width, height)];
-        view.contentMode = UIViewContentModeScaleAspectFit;
-        view.clipsToBounds = YES;
-        [self.imageViewArray addObject:view];
-        [self.scrollView addSubview:view];
+    self.imageViewArray = [NSMutableArray arrayWithCapacity: [self.selectedAssets count]];
+    for (int i = 0; i < [self.selectedAssets count]; i++) {
+        [self.imageViewArray addObject:[NSNull null]];
+
     }
-    
-    [self loadVisibleImages];
+    [self loadCurrentPage];
     [self setupGestureForImageView];
     
     self.scrollView.delegate = self;
@@ -80,21 +76,6 @@ const int NUMBER_OF_IMAGE = 10;
     [self.delegate handleImageViewTapped];
 }
 
-- (void)loadVisibleImages
-{
-    CGSize size = CGSizeMake(self.frame.size.width, self.frame.size.height);
-    NSUInteger index = self.currentItemIndex;
-    if(index == -1) return;
-    
-    for(int i = 0; i < NUMBER_OF_IMAGE && index < [self.selectedAssets count]; i++){
-        PPLObject *obj = [self.selectedAssets objectAtIndex:index++];
-        [self.manager displayPhoto:obj size:size completion:^(UIImage *result, NSDictionary *info) {
-            UIImageView *view = [self.imageViewArray objectAtIndex:i];
-            view.image = result;
-        }];
-    }
-}
-
 - (void)updateConstraints
 {
     [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -107,30 +88,57 @@ const int NUMBER_OF_IMAGE = 10;
 }
 
 /* add another series of functions to deal with large amount of images case*/
+- (void)loadCurrentPage
+{
+    [self loadPage:self.currentItemIndex];
+    [self.scrollView setContentOffset:CGPointMake(self.frame.size.width * (self.currentItemIndex), 0)];
+}
+
+
+- (void)loadOnlyVisiblePages
+{
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
+    
+    for (NSInteger i=0; i<firstPage; i++) {
+        [self purgePage:i];
+    }
+    for (NSInteger i=firstPage; i<=lastPage; i++) {
+        [self loadPage:i];
+    }
+    for (NSInteger i=lastPage+1; i<self.imageViewArray.count; i++) {
+        [self purgePage:i];
+    }
+}
 
 - (void)purgePage:(NSInteger)page {
-    if (page < 0 || page >= [self.selectedAssets count]) {
+    if (page < 0 || page >= self.selectedAssets.count) {
         // If it's outside the range of what you have to display, then do nothing
         return;
     }
     
     // Remove a page from the scroll view and reset the container array
-    UIImageView *pageView = [self.imageViewArray objectAtIndex:page];
-    if ((NSNull*)pageView != [NSNull null]) {
+    UIView *pageView = [self.imageViewArray objectAtIndex:page];
+    if ((NSNull*)pageView != [NSNull null])
+    {
         [pageView removeFromSuperview];
         [self.imageViewArray replaceObjectAtIndex:page withObject:[NSNull null]];
     }
 }
 
-- (void)loadPage:(NSInteger)page {
+- (void)loadPage:(NSInteger)page
+{
     if (page < 0 || page >= [self.selectedAssets count]) {
         return;
     }
     
     UIView *pageView = [self.imageViewArray objectAtIndex:page];
-    if ((NSNull*)pageView == [NSNull null]) {
-        
-        CGRect frame = self.scrollView.bounds;
+    if ((NSNull*)pageView == [NSNull null])
+    {
+        CGRect frame = self.frame;
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0.0f;
         
@@ -139,11 +147,10 @@ const int NUMBER_OF_IMAGE = 10;
         newPageView.frame = frame;
         [self.scrollView addSubview:newPageView];
         
-        [self.manager displayPhoto:[self.selectedAssets objectAtIndex:0] size:frame.size completion:^(UIImage *result, NSDictionary *info) {
+        [self.manager displayPhoto:[self.selectedAssets objectAtIndex:page] size:frame.size completion:^(UIImage *result, NSDictionary *info) {
             newPageView.image = result;
+            [self.imageViewArray replaceObjectAtIndex:page withObject:newPageView];
         }];
-
-        [self.imageViewArray replaceObjectAtIndex:page withObject:newPageView];
     }
 }
 
@@ -151,6 +158,7 @@ const int NUMBER_OF_IMAGE = 10;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    [self loadOnlyVisiblePages];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

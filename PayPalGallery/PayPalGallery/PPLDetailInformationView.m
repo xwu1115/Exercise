@@ -35,7 +35,6 @@ static NSString * const timeImgIdentifer = @"time";
     self.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:22.0/255.0  blue:22.0/255.0 alpha:0.5];
     self.isInfoHidden = YES;
     self.exitButton = [[UIButton alloc] init];
-    //self.exitButton.backgroundColor = [UIColor redColor];
     [self.exitButton setImage:[UIImage imageNamed:@"exit"] forState:UIControlStateNormal];
     [self.exitButton addTarget:self action:@selector(handleButtonPress:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.exitButton];
